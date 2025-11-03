@@ -693,30 +693,27 @@
             margin: 1.5rem 0;
         }
         
-        .media-frame {
+        .media-item {
+            display: inline-block;
             border-radius: 12px;
             overflow: hidden;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            max-width: 100%;
         }
         
-        .media-frame img {
+        .media-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(16, 163, 127, 0.2);
+        }
+        
+        .media-item img {
+            display: block;
             width: 100%;
             height: auto;
-            display: block;
-            max-height: 400px;
-            object-fit: contain;
-        }
-        
-        .media-placeholder {
-            color: var(--text-muted);
-            font-size: 1rem;
-            text-align: center;
-            padding: 3rem;
-            background: var(--bg-dark);
-            border-radius: 12px;
-            border: 2px dashed var(--border);
+            max-width: 100%;
         }
         
         .modal-content h3 {
@@ -828,8 +825,8 @@
                 max-width: 300px;
             }
             
-            .media-frame img {
-                max-height: 300px;
+            .media-item {
+                border-width: 1px;
             }
         }
         
@@ -884,10 +881,6 @@
             .contact-link {
                 min-width: 200px;
                 padding: 0.8rem 1.2rem;
-            }
-            
-            .media-frame img {
-                max-height: 200px;
             }
         }
     </style>
@@ -1216,7 +1209,7 @@
                     <h3>Медиа проекта</h3>
                     <div class="media-gallery">
                         ${project.media.map(media => `
-                            <div class="media-frame">
+                            <div class="media-item">
                                 <img src="${media}" alt="Проект ${project.title}" onerror="this.style.display='none'">
                             </div>
                         `).join('')}
@@ -1295,4 +1288,3 @@
     </script>
 </body>
 </html>
-
