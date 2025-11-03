@@ -642,6 +642,17 @@
             color: var(--bg-dark);
         }
         
+        .project-button.play {
+            background: rgba(255, 82, 82, 0.1);
+            border-color: #ff5252;
+            color: #ff5252;
+        }
+        
+        .project-button.play:hover {
+            background: #ff5252;
+            color: white;
+        }
+        
         .development-steps {
             margin: 1.5rem 0;
         }
@@ -816,7 +827,7 @@
             <ul>
                 <li onclick="openModal('roblox')">
                     <span class="project-link">Игра на движке Roblox Studio</span>
-                    - Разработка multiplayer игры с собственной экономической системой
+                    - Demon Legacy - RPG с кастомной графикой и механиками прокачки
                 </li>
                 <li onclick="openModal('telegram')">
                     <span class="project-link">Telegram бот для управления задачами</span>
@@ -883,30 +894,38 @@
 
         const projectData = {
             roblox: {
-                title: "Multiplayer Игра на Roblox Studio",
-                subtitle: "Разработка сложной игровой механики с экономической системой",
-                description: "Разработал полноценную multiplayer игру на платформе Roblox с использованием Lua. Проект включает сложную экономическую систему, инвентарь, прокачку персонажа и взаимодействие между игроками.",
-                techStack: ["Lua", "Roblox Studio", "Multiplayer", "Game Design", "UI/UX"],
+                title: "Demon Legacy - Roblox RPG",
+                subtitle: "Multiplayer игра с кастомной графикой и системой прокачки",
+                description: "Разработал полноценную multiplayer RPG на платформе Roblox. Игра включает сложную экономическую систему, инвентарь, прокачку персонажа, 3-5 уникальных способностей и взаимодействие между игроками. Создал кастомную графику в Blender и реализовал продвинутую систему камер.",
+                techStack: ["Lua", "Roblox Studio", "Blender", "Multiplayer", "Game Design", "UI/UX"],
                 features: [
                     { title: "🎮 Игровая механика", description: "Система квестов, боевка и интерактивное окружение" },
                     { title: "💰 Экономика", description: "Торговая система и внутриигровая валюта" },
-                    { title: "👥 Multiplayer", description: "Синхронизация действий между игроками" }
+                    { title: "👥 Multiplayer", description: "Синхронизация действий между игроками" },
+                    { title: "🎨 Графика", description: "Кастомные 3D модели из Blender" }
                 ],
-                achievements: ["Более 1000 активных игроков", "Рейтинг 4.8/5 в маркетплейсе", "Положительные отзывы о геймплее"],
+                achievements: [
+                    "Более 1000 активных игроков",
+                    "Рейтинг 4.8/5 в маркетплейсе", 
+                    "Положительные отзывы о геймплее",
+                    "Полностью играбельный MVP"
+                ],
                 hasSourceCode: true,
                 githubUrl: "https://github.com/nikizi1234-ship-it/roblox-game",
+                playUrl: "https://www.roblox.com/games/107962526921864/Demon-Legacy",
                 media: ["images/roblox-gameplay1.jpg", "images/roblox-ui.jpg", "images/roblox-multiplayer.jpg"],
                 developmentSteps: [
                     "Проектирование игровой механики и экономики",
-                    "Разработка базовых систем на Lua", 
+                    "Создание 3D моделей в Blender",
+                    "Разработка базовых систем на Lua",
                     "Создание multiplayer компонентов",
                     "Тестирование и балансировка геймплея",
                     "Публикация и сбор обратной связи"
                 ],
-                outcome: "Игра успешно запущена с положительными отзывами, демонстрирует навыки в геймдизайне и разработке сложных систем."
+                outcome: "Создал работающий MVP игры с полноценным геймплеем. Проект демонстрирует навыки в геймдизайне, 3D-моделировании и разработке сложных игровых систем. Игра доступна для тестирования и получила положительные отзывы игроков."
             },
             telegram: {
-                title: "Telegram бот для управления задачами", 
+                title: "Telegram бот для управления задачами",
                 subtitle: "Координация работы команды с системой уведомлений",
                 description: "Разработал Telegram бота для управления задачами проекта. Бот помогает команде координировать работу, назначать задачи и получать уведомления о статусе выполнения.",
                 techStack: ["Python", "aiogram", "SQLite", "REST API"],
@@ -917,20 +936,20 @@
                 ],
                 functionality: ["Назначение задач участникам", "Уведомления о дедлайнах", "Отслеживание прогресса", "Статистика выполнения"],
                 hasSourceCode: true,
-                githubUrl: "https://github.com/nikizi1234-ship-it/task-manager-bot", 
+                githubUrl: "https://github.com/nikizi1234-ship-it/task-manager-bot",
                 media: ["images/telegram-bot1.jpg", "images/telegram-bot2.jpg"],
                 developmentSteps: [
                     "Проектирование архитектуры бота",
                     "Разработка системы команд на Python",
                     "Интеграция с базой данных SQLite",
-                    "Реализация системы уведомлений", 
+                    "Реализация системы уведомлений",
                     "Тестирование и деплой"
                 ],
                 outcome: "Бот успешно используется для координации работы в команде, демонстрирует навыки backend-разработки и работы с Telegram API."
             },
             webapps: {
                 title: "Веб-приложения с базами данных",
-                subtitle: "Full-stack разработка с Python бэкендом", 
+                subtitle: "Full-stack разработка с Python бэкендом",
                 description: "Разработал несколько полноценных веб-приложений с использованием современного стека технологий. Каждое приложение включает бэкенд на Python, фронтенд и облачную базу данных.",
                 techStack: ["Python", "FastAPI", "MySQL", "JavaScript", "Yandex Cloud"],
                 features: [
@@ -943,7 +962,7 @@
                 media: ["images/webapp1.jpg", "images/webapp2.jpg", "images/webapp3.jpg"],
                 developmentSteps: [
                     "Проектирование архитектуры приложения",
-                    "Разработка REST API на Python", 
+                    "Разработка REST API на Python",
                     "Настройка облачной базы данных",
                     "Создание фронтенд интерфейса",
                     "Деплой и мониторинг"
@@ -1043,6 +1062,11 @@
                             💻 Исходный код
                         </a>
                     ` : ''}
+                    ${project.playUrl ? `
+                        <a href="${project.playUrl}" class="project-button play" target="_blank">
+                            🎮 Играть онлайн
+                        </a>
+                    ` : ''}
                 </div>
             `;
 
@@ -1092,7 +1116,7 @@
                     <div class="media-gallery">
                         ${project.media.map(media => `
                             <div class="media-item">
-                                <img src="${media}" alt="Проект ${project.title}" onerror="this.parentElement.innerHTML='<div class=\"media-placeholder\">Изображение<br>не загружено</div>'">
+                                <img src="${media}" alt="Проект ${project.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\"media-placeholder\">Изображение<br>не загружено</div>'">
                             </div>
                         `).join('')}
                     </div>
