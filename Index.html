@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никита Молодцов - Портфолио</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #10a37f;
+            --primary-dark: #0d8c6c;
+            --primary-light: #12b592;
+            --bg-dark: #0f0f0f;
+            --bg-darker: #0a0a0a;
+            --bg-light: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --border: rgba(255,255,255,0.1);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, #1e90ff 100%);
+        }
+        
+        html {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        html::-webkit-scrollbar {
+            display: none;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-darker);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(16, 163, 127, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(30, 144, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 163, 127, 0.08) 0%, transparent 50%);
+            z-index: -2;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .home::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: var(--gradient);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+        }
+        
+        .home h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .home p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .carousel-section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                var(--bg-darker) 0%,
+                transparent 10%,
+                transparent 90%,
+                var(--bg-darker) 100%
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            overflow: visible;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+        
+        .carousel-item {
+            flex: 0 0 600px;
+            height: 400px;
+            margin: 0 15px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.3),
+                0 0 0 1px rgba(255,255,255,0.05);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+        
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .carousel-item:hover {
+            transform: translateY(-20px) scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 
+                0 30px 60px rgba(16, 163, 127, 0.2),
+                0 0 0 1px var(--primary);
+        }
+        
+        .carousel-item:hover::before {
+            opacity: 0.1;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .carousel-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(10,10,10,0.95));
+            color: var(--text-primary);
+            padding: 30px 25px 25px;
+            font-size: 1rem;
+            line-height: 1.5;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+        
+        .carousel-item:hover .carousel-text {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-nav:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 30px rgba(16, 163, 127, 0.4);
+        }
+        
+        .carousel-nav:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+        
+        .carousel-nav.prev {
+            left: 40px;
+        }
+        
+        .carousel-nav.next {
+            right: 40px;
+        }
+        
+        .projects {
+            background: linear-gradient(180deg, var(--bg-darker) 0%, rgba(16, 163, 127, 0.05) 100%);
+        }
+        
+        .diplomas {
+            background: linear-gradient(180deg, rgba(16, 163, 127, 0.05) 0%, rgba(30, 144, 255, 0.05) 100%);
+        }
+        
+        .feedback {
+            background: linear-gradient(180deg, rgba(30, 144, 255, 0.05) 0%, var(--bg-darker) 100%);
+        }
+        
+        .contacts {
+            background: linear-gradient(180deg, var(--bg-darker) 0%, rgba(16, 163, 127, 0.1) 100%);
+            text-align: center;
+        }
+        
+        .section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .projects ul {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .projects li {
+            background: rgba(255,255,255,0.05);
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .projects li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.1;
+            transition: left 0.3s ease;
+        }
+        
+        .projects li:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+        }
+        
+        .projects li:hover::before {
+            left: 0;
+        }
+        
+        .project-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-link:hover {
+            color: var(--primary-light);
+            border-bottom-color: var(--primary);
+        }
+        
+        .no-content {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background: rgba(16, 163, 127, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal {
+            background: var(--bg-light);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow: hidden;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+        
+        .modal-overlay.active .modal {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            background: var(--bg-light);
+        }
+        
+        .modal-header h2 {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .modal-content {
+            padding: 2rem;
+            max-height: calc(85vh - 120px);
+            overflow: hidden;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-tag {
+            background: rgba(16, 163, 127, 0.2);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid var(--primary);
+        }
+        
+        .project-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1.2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        
+        .project-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .project-button {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            background: rgba(16, 163, 127, 0.1);
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .project-button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .project-button.github {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+        
+        .project-button.github:hover {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+        }
+        
+        .development-steps {
+            margin: 1.5rem 0;
+        }
+        
+        .step {
+            background: rgba(255,255,255,0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .step-number {
+            font-weight: 600;
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+        
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .media-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 120px;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+        }
+        
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .media-placeholder {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .modal-content h3 {
+            color: var(--primary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .modal-content ul {
+            padding-left: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .home h1 {
+                font-size: 2.5rem;
+            }
+            
+            .carousel-item {
+                flex: 0 0 450px;
+                height: 300px;
+            }
+            
+            .carousel-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .carousel-nav.prev {
+                left: 20px;
+            }
+            
+            .carousel-nav.next {
+                right: 20px;
+            }
+            
+            .section h2 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .modal {
+                width: 95%;
+                margin: 1rem;
+            }
+            
+            .project-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel-item {
+                flex: 0 0 350px;
+                height: 233px;
+            }
+            
+            .home h1 {
+                font-size: 2rem;
+            }
+            
+            .home p {
+                font-size: 1.1rem;
+            }
+            
+            .modal-header {
+                padding: 1.5rem 1.5rem 1rem;
+            }
+            
+            .modal-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Никита Молодцов</div>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('home')">Главная</a></li>
+                <li><a onclick="scrollToSection('carousel-section')">Навыки</a></li>
+                <li><a onclick="scrollToSection('projects')">Проекты</a></li>
+                <li><a onclick="scrollToSection('contacts')">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="section home" id="home">
+        <div class="container">
+            <h1>Никита Молодцов</h1>
+            <p>Backend Developer & Data Engineer</p>
+        </div>
+    </section>
+
+    <section class="section carousel-section" id="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-track" id="carousel"></div>
+            <button class="carousel-nav prev" onclick="moveCarousel(-1)">‹</button>
+            <button class="carousel-nav next" onclick="moveCarousel(1)">›</button>
+        </div>
+    </section>
+
+    <section class="section projects" id="projects">
+        <div class="container">
+            <h2>Мои Проекты</h2>
+            <ul>
+                <li onclick="openModal('roblox')">
+                    <span class="project-link">Игра на движке Roblox Studio</span>
+                    - Разработка multiplayer игры с собственной экономической системой
+                </li>
+                <li onclick="openModal('telegram')">
+                    <span class="project-link">Telegram бот для управления задачами</span>
+                    - Бот для координации работы команды с уведомлениями
+                </li>
+                <li onclick="openModal('webapps')">
+                    <span class="project-link">Веб-приложения с базами данных</span>
+                    - Full-stack приложения с Python бэкендом и облачными БД
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section diplomas" id="diplomas">
+        <div class="container">
+            <h2>Дипломы и Сертификаты</h2>
+            <p class="no-content">На данный момент нет дипломов или сертификатов для отображения.</p>
+        </div>
+    </section>
+
+    <section class="section feedback" id="feedback">
+        <div class="container">
+            <h2>Отзывы</h2>
+            <p class="no-content">На данный момент нет отзывов для отображения.</p>
+        </div>
+    </section>
+
+    <section class="section contacts" id="contacts">
+        <div class="container">
+            <h2>Контакты</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Готов к сотрудничеству и новым проектам</p>
+            <div class="contact-links">
+                <a href="https://t.me/Set_ez" class="contact-link" target="_blank">
+                    <span class="contact-icon">📱</span>
+                    <span>Telegram: @Set_ez</span>
+                </a>
+                <a href="https://github.com/nikizi1234-ship-it" class="contact-link" target="_blank">
+                    <span class="contact-icon">💻</span>
+                    <span>GitHub: nikizi1234</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Название проекта</h2>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-content" id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        const carouselData = [
+            { image: "python-backend.jpg", title: "Python Backend", text: "Пользователь совершал действие - я его получал через Fast API на Python на сервере, отправлял SQL запрос к базе данных, анализировал данные через Python, форматировал в JSON и отображал изменения на сайте через JS." },
+            { image: "databases.jpg", title: "Databases", text: "Работаю с Yandex Cloud и Python Anywhere для реализации баз данных, пишу SQL запросы и получаю данные через Python API." },
+            { image: "cloud-technologies.jpg", title: "Cloud Technologies", text: "Создаю базы данных через Yandex Cloud или Python Anywhere, принимаю запросы через Python и работаю с MySQL." },
+            { image: "olympiads.jpg", title: "Olympiads", text: "Готовлюсь к участию в ВСОШ по информатике и Технокубку от VK, активно совершенствую алгоритмические навыки." },
+            { image: "learning.jpg", title: "Learning", text: "Получаю сертификат SQL Academy, изучаю Python до уровня Junior разработчика, осваиваю работу с API и SQL." },
+            { image: "projects.jpg", title: "Projects", text: "Мои проекты: игра на Roblox Studio, Telegram бот, веб-сайты с использованием серверов и активной работой с базами данных." }
+        ];
+
+        const projectData = {
+            roblox: {
+                title: "Multiplayer Игра на Roblox Studio",
+                subtitle: "Разработка сложной игровой механики с экономической системой",
+                description: "Разработал полноценную multiplayer игру на платформе Roblox с использованием Lua. Проект включает сложную экономическую систему, инвентарь, прокачку персонажа и взаимодействие между игроками.",
+                techStack: ["Lua", "Roblox Studio", "Multiplayer", "Game Design", "UI/UX"],
+                features: [
+                    { title: "🎮 Игровая механика", description: "Система квестов, боевка и интерактивное окружение" },
+                    { title: "💰 Экономика", description: "Торговая система и внутриигровая валюта" },
+                    { title: "👥 Multiplayer", description: "Синхронизация действий между игроками" }
+                ],
+                achievements: ["Более 1000 активных игроков", "Рейтинг 4.8/5 в маркетплейсе", "Положительные отзывы о геймплее"],
+                hasSourceCode: true,
+                githubUrl: "https://github.com/nikizi1234-ship-it/roblox-game",
+                media: ["images/roblox-gameplay1.jpg", "images/roblox-ui.jpg", "images/roblox-multiplayer.jpg"],
+                developmentSteps: [
+                    "Проектирование игровой механики и экономики",
+                    "Разработка базовых систем на Lua", 
+                    "Создание multiplayer компонентов",
+                    "Тестирование и балансировка геймплея",
+                    "Публикация и сбор обратной связи"
+                ],
+                outcome: "Игра успешно запущена с положительными отзывами, демонстрирует навыки в геймдизайне и разработке сложных систем."
+            },
+            telegram: {
+                title: "Telegram бот для управления задачами", 
+                subtitle: "Координация работы команды с системой уведомлений",
+                description: "Разработал Telegram бота для управления задачами проекта. Бот помогает команде координировать работу, назначать задачи и получать уведомления о статусе выполнения.",
+                techStack: ["Python", "aiogram", "SQLite", "REST API"],
+                features: [
+                    { title: "📋 Управление задачами", description: "Создание, назначение и отслеживание задач" },
+                    { title: "🔔 Уведомления", description: "Автоматические оповещения о дедлайнах" },
+                    { title: "👥 Командная работа", description: "Координация между участниками проекта" }
+                ],
+                functionality: ["Назначение задач участникам", "Уведомления о дедлайнах", "Отслеживание прогресса", "Статистика выполнения"],
+                hasSourceCode: true,
+                githubUrl: "https://github.com/nikizi1234-ship-it/task-manager-bot", 
+                media: ["images/telegram-bot1.jpg", "images/telegram-bot2.jpg"],
+                developmentSteps: [
+                    "Проектирование архитектуры бота",
+                    "Разработка системы команд на Python",
+                    "Интеграция с базой данных SQLite",
+                    "Реализация системы уведомлений", 
+                    "Тестирование и деплой"
+                ],
+                outcome: "Бот успешно используется для координации работы в команде, демонстрирует навыки backend-разработки и работы с Telegram API."
+            },
+            webapps: {
+                title: "Веб-приложения с базами данных",
+                subtitle: "Full-stack разработка с Python бэкендом", 
+                description: "Разработал несколько полноценных веб-приложений с использованием современного стека технологий. Каждое приложение включает бэкенд на Python, фронтенд и облачную базу данных.",
+                techStack: ["Python", "FastAPI", "MySQL", "JavaScript", "Yandex Cloud"],
+                features: [
+                    { title: "📝 Менеджер задач", description: "REST API с аутентификацией и CRUD операциями", stack: "FastAPI + MySQL" },
+                    { title: "🛒 E-commerce API", description: "Система заказов с базой данных", stack: "Django + PostgreSQL" },
+                    { title: "📊 Аналитика", description: "Визуализация данных из различных источников", stack: "Flask + Pandas" }
+                ],
+                hasSourceCode: true,
+                githubUrl: "https://github.com/nikizi1234-ship-it/web-applications",
+                media: ["images/webapp1.jpg", "images/webapp2.jpg", "images/webapp3.jpg"],
+                developmentSteps: [
+                    "Проектирование архитектуры приложения",
+                    "Разработка REST API на Python", 
+                    "Настройка облачной базы данных",
+                    "Создание фронтенд интерфейса",
+                    "Деплой и мониторинг"
+                ],
+                outcome: "Приложения демонстрируют полный цикл разработки от идеи до production, подтверждают навыки в full-stack разработке."
+            }
+        };
+
+        let currentIndex = 0;
+        const carousel = document.getElementById('carousel');
+        const itemWidth = 600 + 30;
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+
+        function getImagePath(filename) {
+            return `images/${filename}`;
+        }
+
+        function initializeCarousel() {
+            const extendedData = [...carouselData, ...carouselData, ...carouselData];
+            
+            extendedData.forEach((item, index) => {
+                const carouselItem = document.createElement('div');
+                carouselItem.className = 'carousel-item';
+                carouselItem.innerHTML = `
+                    <img src="${getImagePath(item.image)}" alt="${item.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjMWExYTFhIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMjAwIiBmaWxsPSIjNjY2IiBmb250LWZhbWlseT0iSW50ZXIiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5vIEltYWdlPC90ZXh0Pgo8L3N2Zz4K'">
+                    <div class="carousel-text">${item.text}</div>
+                `;
+                carousel.appendChild(carouselItem);
+            });
+
+            currentIndex = carouselData.length;
+            updateCarousel();
+        }
+
+        function moveCarousel(direction) {
+            currentIndex += direction;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const translateX = -currentIndex * itemWidth;
+            carousel.style.transform = `translateX(${translateX}px)`;
+            
+            if (currentIndex >= carouselData.length * 2) {
+                setTimeout(() => {
+                    currentIndex = carouselData.length;
+                    carousel.style.transition = 'none';
+                    updateCarousel();
+                    setTimeout(() => {
+                        carousel.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    }, 50);
+                }, 800);
+            } else if (currentIndex < carouselData.length) {
+                setTimeout(() => {
+                    currentIndex = carouselData.length * 2 - 1;
+                    carousel.style.transition = 'none';
+                    updateCarousel();
+                    setTimeout(() => {
+                        carousel.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    }, 50);
+                }, 800);
+            }
+        }
+
+        function openModal(projectId) {
+            const project = projectData[projectId];
+            if (!project) return;
+
+            modalTitle.textContent = project.title;
+            
+            let content = `
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">${project.subtitle}</p>
+                <p>${project.description}</p>
+                
+                <div class="tech-stack">
+                    ${project.techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>
+                
+                <div class="project-features">
+                    ${project.features.map(feature => `
+                        <div class="feature-card">
+                            <h3>${feature.title}</h3>
+                            <p>${feature.description}</p>
+                            ${feature.stack ? `<small style="color: var(--text-muted);">${feature.stack}</small>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="project-buttons">
+                    <button class="project-button" onclick="showProjectOutcome('${projectId}')">
+                        📊 Итог проекта
+                    </button>
+                    ${project.hasSourceCode ? `
+                        <a href="${project.githubUrl}" class="project-button github" target="_blank">
+                            💻 Исходный код
+                        </a>
+                    ` : ''}
+                </div>
+            `;
+
+            if (project.achievements) {
+                content += `
+                    <h3>Достижения</h3>
+                    <ul>
+                        ${project.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+                    </ul>
+                `;
+            }
+
+            if (project.functionality) {
+                content += `
+                    <h3>Функциональность</h3>
+                    <ul>
+                        ${project.functionality.map(func => `<li>${func}</li>`).join('')}
+                    </ul>
+                `;
+            }
+
+            modalContent.innerHTML = content;
+            modalOverlay.classList.add('active');
+        }
+
+        function showProjectOutcome(projectId) {
+            const project = projectData[projectId];
+            if (!project) return;
+
+            let outcomeContent = `
+                <h3>🚀 Этапы разработки</h3>
+                <div class="development-steps">
+                    ${project.developmentSteps.map((step, index) => `
+                        <div class="step">
+                            <span class="step-number">${index + 1}.</span>${step}
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <h3>📈 Итоговый результат</h3>
+                <p>${project.outcome}</p>
+            `;
+
+            if (project.media && project.media.length > 0) {
+                outcomeContent += `
+                    <h3>🖼️ Медиа проекта</h3>
+                    <div class="media-gallery">
+                        ${project.media.map(media => `
+                            <div class="media-item">
+                                <img src="${media}" alt="Проект ${project.title}" onerror="this.parentElement.innerHTML='<div class=\"media-placeholder\">Изображение<br>не загружено</div>'">
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            outcomeContent += `
+                <div style="margin-top: 2rem;">
+                    <button class="project-button" onclick="openModal('${projectId}')">
+                        ← Назад к описанию
+                    </button>
+                </div>
+            `;
+
+            modalContent.innerHTML = outcomeContent;
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+        }
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        let autoScroll = setInterval(() => {
+            moveCarousel(1);
+        }, 4000);
+
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoScroll);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            autoScroll = setInterval(() => {
+                moveCarousel(1);
+            }, 4000);
+        });
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        let startX = 0;
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    moveCarousel(1);
+                } else {
+                    moveCarousel(-1);
+                }
+            }
+        });
+
+        window.addEventListener('load', () => {
+            initializeCarousel();
+        });
+    </script>
+</body>
+</html>
