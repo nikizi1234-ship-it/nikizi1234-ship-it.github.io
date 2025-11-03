@@ -1217,7 +1217,7 @@
                     <div class="media-gallery">
                         ${project.media.map(media => `
                             <div class="media-frame">
-                                <img src="${media}" alt="Проект ${project.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\"media-placeholder\">Изображение не загружено</div>'">
+                                <img src="${media}" alt="Проект ${project.title}" onerror="this.style.display='none'">
                             </div>
                         `).join('')}
                     </div>
@@ -1295,3 +1295,4 @@
     </script>
 </body>
 </html>
+
