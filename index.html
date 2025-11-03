@@ -278,7 +278,6 @@
             top: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(rgba(10,10,10,0.9), transparent);
             color: var(--primary-light);
             padding: 25px 25px 15px;
             font-size: 1.5rem;
@@ -295,6 +294,23 @@
             background-clip: text;
         }
         
+        .carousel-title-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, 
+                rgba(10, 10, 10, 0.9) 0%, 
+                rgba(10, 10, 10, 0.7) 50%,
+                transparent 100%);
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 2;
+            border-radius: 20px 20px 0 0;
+        }
+        
         .carousel-item:hover {
             transform: translateY(-20px) scale(1.05);
             border-color: var(--primary);
@@ -308,6 +324,11 @@
         }
         
         .carousel-item:hover .carousel-title {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .carousel-item:hover .carousel-title-overlay {
             transform: translateY(0);
             opacity: 1;
         }
@@ -798,6 +819,10 @@
                 padding: 20px 15px 10px;
             }
             
+            .carousel-title-overlay {
+                height: 80px;
+            }
+            
             .section {
                 padding: 80px 0;
             }
@@ -879,6 +904,10 @@
             .carousel-title {
                 font-size: 1.1rem;
                 padding: 15px 10px 8px;
+            }
+            
+            .carousel-title-overlay {
+                height: 70px;
             }
             
             .nav {
@@ -1145,6 +1174,7 @@
                 carouselItem.className = 'carousel-item';
                 carouselItem.innerHTML = `
                     <img src="${getImagePath(item.image)}" alt="${item.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjMWExYTFhIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMjAwIiBmaWxsPSIjNjY2IiBmb250LWZhbWlseT0iSW50ZXIiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5vIEltYWdlPC90ZXh0Pgo8L3N2Zz4K'">
+                    <div class="carousel-title-overlay"></div>
                     <div class="carousel-title">${item.title}</div>
                     <div class="carousel-text">${item.text}</div>
                 `;
