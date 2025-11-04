@@ -24,6 +24,7 @@
             --text-muted: #666666;
             --border: rgba(255,255,255,0.1);
             --gradient: linear-gradient(135deg, var(--primary) 0%, #1e90ff 100%);
+            --glow: 0 0 30px rgba(16, 163, 127, 0.4);
         }
         
         body {
@@ -33,7 +34,6 @@
             background: var(--bg-darker);
             min-height: 100vh;
             position: relative;
-            overflow-x: hidden;
         }
         
         ::-webkit-scrollbar {
@@ -206,163 +206,327 @@
                 transform: translateY(0);
             }
         }
-        
-        .carousel-section {
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
+
+        /* НОВЫЙ СТИЛЬ ДЛЯ НАВЫКОВ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
-        .carousel-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                var(--bg-darker) 0%,
-                transparent 10%,
-                transparent 90%,
-                var(--bg-darker) 100%
-            );
-            pointer-events: none;
-            z-index: 2;
-        }
-        
-        .carousel-container {
-            position: relative;
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
-            overflow: visible;
-        }
-        
-        .carousel-track {
-            display: flex;
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-        }
-        
-        .carousel-item {
-            flex: 0 0 600px;
-            height: 400px;
-            margin: 0 15px;
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
+        .skill-card {
             background: var(--bg-light);
             border: 1px solid var(--border);
-            box-shadow: 
-                0 20px 40px rgba(0,0,0,0.3),
-                0 0 0 1px rgba(255,255,255,0.05);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform-origin: center;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
         }
         
-        .carousel-item::before {
+        .skill-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
             background: var(--gradient);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.4s ease;
             z-index: 1;
         }
         
-        .carousel-title {
-            position: absolute;
-            top: 0;
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 
+                0 20px 40px rgba(16, 163, 127, 0.15),
+                0 0 0 1px var(--primary);
+        }
+        
+        .skill-card:hover::before {
             left: 0;
-            right: 0;
-            color: var(--primary-light);
-            padding: 25px 25px 15px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            line-height: 1.3;
-            transform: translateY(-100%);
-            opacity: 0;
-            transition: all 0.4s ease;
-            z-index: 3;
-            text-align: center;
+            opacity: 0.05;
+        }
+        
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .carousel-title-overlay {
+        .skill-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .skill-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+            font-size: 1rem;
+        }
+        
+        .skill-level {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .level-dots {
+            display: flex;
+            gap: 0.3rem;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        .level-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ОБНОВЛЕННАЯ КАРУСЕЛЬ ДЛЯ УСЛУГ С СИЯНИЕМ */
+        .services-section {
+            background: linear-gradient(180deg, var(--bg-darker) 0%, rgba(16, 163, 127, 0.05) 100%);
+            position: relative;
+            /* УБРАН overflow: hidden */
+        }
+        
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: var(--gradient);
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.1;
+            animation: glowPulse 4s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { 
+                opacity: 0.1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                opacity: 0.2;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+        
+        .services-carousel {
+            position: relative;
+            width: 100%;
+            /* УБРАН overflow: hidden - это была основная проблема! */
+            margin-top: 3rem;
+            z-index: 2;
+        }
+        
+        .services-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+        
+        .service-item {
+            flex: 0 0 100%;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .service-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 25px;
+            border: 1px solid rgba(16, 163, 127, 0.3);
+            position: relative;
+            /* УБРАН overflow: hidden */
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+        
+        .service-content::before {
+            content: '';
+            position: absolute;
+            top: -10px; /* Увеличили область свечения */
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: var(--gradient);
+            border-radius: 30px; /* Увеличили радиус для большей области */
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .service-content::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom, 
-                rgba(10, 10, 10, 0.9) 0%, 
-                rgba(10, 10, 10, 0.7) 50%,
-                transparent 100%);
-            transform: translateY(-100%);
-            opacity: 0;
-            transition: all 0.4s ease;
-            z-index: 2;
-            border-radius: 20px 20px 0 0;
-        }
-        
-        .carousel-item:hover {
-            transform: translateY(-20px) scale(1.05);
-            border-color: var(--primary);
-            box-shadow: 
-                0 30px 60px rgba(16, 163, 127, 0.2),
-                0 0 0 1px var(--primary);
-        }
-        
-        .carousel-item:hover::before {
-            opacity: 0.1;
-        }
-        
-        .carousel-item:hover .carousel-title {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .carousel-item:hover .carousel-title-overlay {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .carousel-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .carousel-text {
-            position: absolute;
             bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(10,10,10,0.95));
-            color: var(--text-primary);
-            padding: 30px 25px 25px;
-            font-size: 1rem;
-            line-height: 1.5;
-            transform: translateY(10px);
-            opacity: 0;
-            transition: all 0.4s ease;
+            background: var(--bg-light);
+            border-radius: 23px;
+            z-index: -1;
+        }
+        
+        .service-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+            border-color: var(--primary);
+        }
+        
+        .service-content:hover::before {
+            opacity: 0.4; /* Увеличили непрозрачность для лучшего эффекта */
+            animation: borderGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { 
+                opacity: 0.3;
+                filter: brightness(1);
+            }
+            50% { 
+                opacity: 0.6;
+                filter: brightness(1.3);
+            }
+        }
+        
+        .service-icon {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 15px rgba(16, 163, 127, 0.4));
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .service-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(16, 163, 127, 0.3);
+        }
+        
+        .service-content p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+        
+        .service-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .service-feature {
+            background: rgba(16, 163, 127, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(16, 163, 127, 0.3);
+            color: var(--primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .service-feature:hover {
+            background: rgba(16, 163, 127, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 163, 127, 0.2);
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            z-index: 2;
+            position: relative;
+            padding: 20px 0; /* Добавили отступы для сияния */
+        }
+        
+        .indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
             z-index: 2;
         }
         
-        .carousel-item:hover .carousel-text {
-            transform: translateY(0);
-            opacity: 1;
+        .indicator::before {
+            content: '';
+            position: absolute;
+            top: -6px; /* Увеличили область сияния */
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .indicator.active {
+            background: var(--primary);
+            transform: scale(1.3);
+            box-shadow: 0 0 20px var(--primary);
+        }
+        
+        .indicator.active::before {
+            opacity: 0.4;
         }
         
         .carousel-nav {
@@ -378,8 +542,7 @@
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.5rem;
-            font-weight: 300;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s ease;
             z-index: 10;
             display: flex;
             align-items: center;
@@ -390,31 +553,27 @@
             background: var(--primary);
             border-color: var(--primary);
             transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 0 30px rgba(16, 163, 127, 0.4);
-        }
-        
-        .carousel-nav:active {
-            transform: translateY(-50%) scale(0.95);
+            box-shadow: var(--glow);
         }
         
         .carousel-nav.prev {
-            left: 40px;
+            left: 1rem;
         }
         
         .carousel-nav.next {
-            right: 40px;
+            right: 1rem;
         }
         
         .projects {
-            background: linear-gradient(180deg, var(--bg-darker) 0%, rgba(16, 163, 127, 0.05) 100%);
-        }
-        
-        .diplomas {
             background: linear-gradient(180deg, rgba(16, 163, 127, 0.05) 0%, rgba(30, 144, 255, 0.05) 100%);
         }
         
-        .feedback {
+        .diplomas {
             background: linear-gradient(180deg, rgba(30, 144, 255, 0.05) 0%, var(--bg-darker) 100%);
+        }
+        
+        .feedback {
+            background: linear-gradient(180deg, var(--bg-darker) 0%, rgba(16, 163, 127, 0.1) 100%);
         }
         
         .contacts {
@@ -432,6 +591,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            position: relative;
+            z-index: 2;
         }
         
         .projects ul {
@@ -780,6 +941,14 @@
             color: var(--text-secondary);
         }
         
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .home h1 {
                 font-size: 2.5rem;
@@ -789,10 +958,42 @@
                 font-size: 1.1rem;
             }
             
-            .carousel-item {
-                flex: 0 0 85vw;
-                height: 300px;
-                margin: 0 10px;
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .skill-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .service-content {
+                padding: 3rem 2rem;
+                margin: 0 1rem; /* Добавили отступы по бокам */
+            }
+            
+            .service-content::before {
+                top: -5px;
+                left: -5px;
+                right: -5px;
+                bottom: -5px;
+            }
+            
+            .service-content h3 {
+                font-size: 1.8rem;
+            }
+            
+            .service-content p {
+                font-size: 1.1rem;
+            }
+            
+            .service-features {
+                gap: 1rem;
+            }
+            
+            .service-feature {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
             }
             
             .carousel-nav {
@@ -802,25 +1003,11 @@
             }
             
             .carousel-nav.prev {
-                left: 10px;
+                left: 0.5rem;
             }
             
             .carousel-nav.next {
-                right: 10px;
-            }
-            
-            .carousel-text {
-                padding: 20px 15px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .carousel-title {
-                font-size: 1.3rem;
-                padding: 20px 15px 10px;
-            }
-            
-            .carousel-title-overlay {
-                height: 80px;
+                right: 0.5rem;
             }
             
             .section {
@@ -881,10 +1068,6 @@
                 width: 100%;
                 max-width: 300px;
             }
-            
-            .media-item {
-                border-width: 1px;
-            }
         }
         
         @media (max-width: 480px) {
@@ -896,18 +1079,52 @@
                 font-size: 1rem;
             }
             
-            .carousel-item {
-                flex: 0 0 80vw;
-                height: 250px;
+            .skill-card {
+                padding: 1.5rem 1rem;
             }
             
-            .carousel-title {
-                font-size: 1.1rem;
-                padding: 15px 10px 8px;
+            .skill-icon {
+                font-size: 2.5rem;
             }
             
-            .carousel-title-overlay {
-                height: 70px;
+            .skill-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .service-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .service-icon {
+                font-size: 3.5rem;
+            }
+            
+            .service-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .service-content p {
+                font-size: 1rem;
+            }
+            
+            .service-features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .service-feature {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+            }
+            
+            .carousel-indicators {
+                gap: 1rem;
+            }
+            
+            .indicator {
+                width: 14px;
+                height: 14px;
             }
             
             .nav {
@@ -959,7 +1176,8 @@
             <div class="logo">Никита Молодцов</div>
             <ul class="nav-links">
                 <li><a onclick="scrollToSection('home')">Главная</a></li>
-                <li><a onclick="scrollToSection('carousel-section')">Навыки</a></li>
+                <li><a onclick="scrollToSection('skills')">Навыки</a></li>
+                <li><a onclick="scrollToSection('services')">Услуги</a></li>
                 <li><a onclick="scrollToSection('projects')">Проекты</a></li>
                 <li><a onclick="scrollToSection('contacts')">Контакты</a></li>
             </ul>
@@ -973,11 +1191,160 @@
         </div>
     </section>
 
-    <section class="section carousel-section" id="carousel-section">
-        <div class="carousel-container">
-            <div class="carousel-track" id="carousel"></div>
-            <button class="carousel-nav prev" onclick="moveCarousel(-1)">‹</button>
-            <button class="carousel-nav next" onclick="moveCarousel(1)">›</button>
+    <!-- НОВЫЙ РАЗДЕЛ НАВЫКОВ -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2>Мои Навыки</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🐍</div>
+                    <h3>Python Development</h3>
+                    <p>2 года коммерческого опыта. Разработка backend на FastAPI, работа с базами данных, создание REST API и анализ данных с Pandas/NumPy.</p>
+                    <div class="skill-level">
+                        <div class="level-dots">
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span class="level-text">Продвинутый</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>Базы данных & SQL</h3>
+                    <p>Глубокое понимание реляционных баз данных. Работа с MySQL, проектирование схем, оптимизация запросов, интеграция с Python приложениями.</p>
+                    <div class="skill-level">
+                        <div class="level-dots">
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span class="level-text">Продвинутый</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Full-stack разработка: HTML5, CSS3, JavaScript. Создание адаптивных интерфейсов, работа с DOM, асинхронные запросы, деплой на GitHub Pages.</p>
+                    <div class="skill-level">
+                        <div class="level-dots">
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span class="level-text">Средний</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">☁️</div>
+                    <h3>Cloud Technologies</h3>
+                    <p>Опыт работы с Yandex Cloud, развертывание приложений, настройка баз данных в облаке, основы контейнеризации с Docker.</p>
+                    <div class="skill-level">
+                        <div class="level-dots">
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span class="level-text">Базовый</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🎮</div>
+                    <h3>Game Development</h3>
+                    <p>Разработка игр на Roblox Studio с Lua. Создание multiplayer RPG, работа с 3D графикой из Blender, проектирование игровых систем.</p>
+                    <div class="skill-level">
+                        <div class="level-dots">
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span class="level-text">Продвинутый</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🛠️</div>
+                    <h3>Tools & Design</h3>
+                    <p>Figma для проектирования интерфейсов, Blender для 3D моделирования, Git/GitHub для контроля версий, Docker для контейнеризации.</p>
+                    <div class="skill-level">
+                        <div class="level-dots">
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span class="level-text">Средний</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОБНОВЛЕННАЯ КАРУСЕЛЬ ДЛЯ УСЛУГ С СИЯНИЕМ -->
+    <section class="section services-section" id="services">
+        <div class="container">
+            <h2>Услуги</h2>
+            <div class="services-carousel">
+                <button class="carousel-nav prev" onclick="moveServiceCarousel(-1)">‹</button>
+                <div class="services-track" id="servicesTrack">
+                    <div class="service-item">
+                        <div class="service-content">
+                            <div class="service-icon">🚀</div>
+                            <h3>Backend Разработка</h3>
+                            <p>Создаю полноценные backend системы на Python с FastAPI. Реализую REST API, работаю с базами данных, настраиваю аутентификацию и обрабатываю бизнес-логику. От проектирования архитектуры до деплоя на облачные платформы.</p>
+                            <div class="service-features">
+                                <span class="service-feature">FastAPI</span>
+                                <span class="service-feature">REST API</span>
+                                <span class="service-feature">Базы данных</span>
+                                <span class="service-feature">Деплой</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-content">
+                            <div class="service-icon">📊</div>
+                            <h3>Data Engineering</h3>
+                            <p>Строю пайплайны обработки данных: от получения сырых данных через API до их анализа и визуализации. Использую Pandas для анализа, создаю ETL процессы и разрабатываю системы для работы с большими объемами информации.</p>
+                            <div class="service-features">
+                                <span class="service-feature">Pandas/NumPy</span>
+                                <span class="service-feature">ETL</span>
+                                <span class="service-feature">Аналитика</span>
+                                <span class="service-feature">Визуализация</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-content">
+                            <div class="service-icon">🎯</div>
+                            <h3>Full-Stack Проекты</h3>
+                            <p>Разрабатываю complete solutions: от базы данных и backend API до фронтенд интерфейса. Понимаю полный цикл разработки и могу создать работающий продукт от идеи до production.</p>
+                            <div class="service-features">
+                                <span class="service-feature">Python Backend</span>
+                                <span class="service-feature">JavaScript Frontend</span>
+                                <span class="service-feature">Базы данных</span>
+                                <span class="service-feature">Облако</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav next" onclick="moveServiceCarousel(1)">›</button>
+                <div class="carousel-indicators" id="serviceIndicators"></div>
+            </div>
         </div>
     </section>
 
@@ -1043,39 +1410,6 @@
     </div>
 
     <script>
-        const carouselData = [
-            { 
-                image: "python-backend.jpg", 
-                title: "Python Backend", 
-                text: "Пользователь совершал действие - я его получал через Fast API на Python на сервере, отправлял SQL запрос к базе данных, анализировал данные через Python, форматировал в JSON и отображал изменения на сайте через JS." 
-            },
-            { 
-                image: "databases.jpg", 
-                title: "Databases", 
-                text: "Работаю с Yandex Cloud и Python Anywhere для реализации баз данных, пишу SQL запросы и получаю данные через Python API." 
-            },
-            { 
-                image: "cloud-technologies.jpg", 
-                title: "Cloud Technologies", 
-                text: "Создаю базы данных через Yandex Cloud или Python Anywhere, принимаю запросы через Python и работаю с MySQL." 
-            },
-            { 
-                image: "olympiads.jpg", 
-                title: "Olympiads", 
-                text: "Готовлюсь к участию в ВСОШ по информатике и Технокубку от VK, активно совершенствую алгоритмические навыки." 
-            },
-            { 
-                image: "learning.jpg", 
-                title: "Learning", 
-                text: "Получаю сертификат SQL Academy, изучаю Python до уровня Junior разработчика, осваиваю работу с API и SQL." 
-            },
-            { 
-                image: "projects.jpg", 
-                title: "Projects", 
-                text: "Мои проекты: игра на Roblox Studio, Telegram бот, веб-сайты с использованием серверов и активной работой с базами данных." 
-            }
-        ];
-
         const projectData = {
             roblox: {
                 title: "Demon Legacy - Roblox RPG",
@@ -1155,65 +1489,49 @@
             }
         };
 
-        let currentIndex = 0;
-        const carousel = document.getElementById('carousel');
-        const itemWidth = 600 + 30;
+        // Карусель услуг
+        let currentServiceIndex = 0;
+        const servicesTrack = document.getElementById('servicesTrack');
+        const serviceIndicators = document.getElementById('serviceIndicators');
+
+        function initializeServicesCarousel() {
+            // Создаем индикаторы
+            const items = servicesTrack.children;
+            for (let i = 0; i < items.length; i++) {
+                const indicator = document.createElement('button');
+                indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
+                indicator.onclick = () => moveToService(i);
+                serviceIndicators.appendChild(indicator);
+            }
+            updateServicesCarousel();
+        }
+
+        function moveServiceCarousel(direction) {
+            const items = servicesTrack.children;
+            currentServiceIndex = (currentServiceIndex + direction + items.length) % items.length;
+            updateServicesCarousel();
+        }
+
+        function moveToService(index) {
+            currentServiceIndex = index;
+            updateServicesCarousel();
+        }
+
+        function updateServicesCarousel() {
+            const translateX = -currentServiceIndex * 100;
+            servicesTrack.style.transform = `translateX(${translateX}%)`;
+            
+            // Обновляем индикаторы
+            const indicators = serviceIndicators.children;
+            for (let i = 0; i < indicators.length; i++) {
+                indicators[i].className = `indicator ${i === currentServiceIndex ? 'active' : ''}`;
+            }
+        }
+
+        // Модальные окна
         const modalOverlay = document.getElementById('modalOverlay');
         const modalTitle = document.getElementById('modalTitle');
         const modalContent = document.getElementById('modalContent');
-
-        function getImagePath(filename) {
-            return `images/${filename}`;
-        }
-
-        function initializeCarousel() {
-            const extendedData = [...carouselData, ...carouselData, ...carouselData];
-            
-            extendedData.forEach((item, index) => {
-                const carouselItem = document.createElement('div');
-                carouselItem.className = 'carousel-item';
-                carouselItem.innerHTML = `
-                    <img src="${getImagePath(item.image)}" alt="${item.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjMWExYTFhIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMjAwIiBmaWxsPSIjNjY2IiBmb250LWZhbWlseT0iSW50ZXIiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5vIEltYWdlPC90ZXh0Pgo8L3N2Zz4K'">
-                    <div class="carousel-title-overlay"></div>
-                    <div class="carousel-title">${item.title}</div>
-                    <div class="carousel-text">${item.text}</div>
-                `;
-                carousel.appendChild(carouselItem);
-            });
-
-            currentIndex = carouselData.length;
-            updateCarousel();
-        }
-
-        function moveCarousel(direction) {
-            currentIndex += direction;
-            updateCarousel();
-        }
-
-        function updateCarousel() {
-            const translateX = -currentIndex * itemWidth;
-            carousel.style.transform = `translateX(${translateX}px)`;
-            
-            if (currentIndex >= carouselData.length * 2) {
-                setTimeout(() => {
-                    currentIndex = carouselData.length;
-                    carousel.style.transition = 'none';
-                    updateCarousel();
-                    setTimeout(() => {
-                        carousel.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                    }, 50);
-                }, 800);
-            } else if (currentIndex < carouselData.length) {
-                setTimeout(() => {
-                    currentIndex = carouselData.length * 2 - 1;
-                    carousel.style.transition = 'none';
-                    updateCarousel();
-                    setTimeout(() => {
-                        carousel.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                    }, 50);
-                }, 800);
-            }
-        }
 
         function openModal(projectId) {
             const project = projectData[projectId];
@@ -1336,46 +1654,29 @@
             }
         });
 
-        let autoScroll = setInterval(() => {
-            moveCarousel(1);
-        }, 4000);
-
-        carousel.addEventListener('mouseenter', () => {
-            clearInterval(autoScroll);
-        });
-
-        carousel.addEventListener('mouseleave', () => {
-            autoScroll = setInterval(() => {
-                moveCarousel(1);
-            }, 4000);
-        });
-
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({
                 behavior: 'smooth'
             });
         }
 
-        let startX = 0;
-        carousel.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
+        // Автопрокрутка карусели услуг
+        let serviceAutoScroll = setInterval(() => {
+            moveServiceCarousel(1);
+        }, 5000);
+
+        servicesTrack.addEventListener('mouseenter', () => {
+            clearInterval(serviceAutoScroll);
         });
 
-        carousel.addEventListener('touchend', (e) => {
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-            
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    moveCarousel(1);
-                } else {
-                    moveCarousel(-1);
-                }
-            }
+        servicesTrack.addEventListener('mouseleave', () => {
+            serviceAutoScroll = setInterval(() => {
+                moveServiceCarousel(1);
+            }, 5000);
         });
 
         window.addEventListener('load', () => {
-            initializeCarousel();
+            initializeServicesCarousel();
         });
     </script>
 </body>
