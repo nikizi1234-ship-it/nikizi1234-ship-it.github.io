@@ -13,5 +13,6 @@ Backend Developer & Data Engineer | 12 лет | 2 года опыта
 - Telegram бот для управления задачами  
 - Веб-приложения с базами данных
 
-## 🌐 Сайт портфолио
-https://nikizi1234-ship-it.github.io
+## 🌐 контакты:
+сайт - https://nikizi1234-ship-it.github.io
+тг - https://t.me/Set_ez
