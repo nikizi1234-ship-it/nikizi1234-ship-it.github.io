@@ -596,6 +596,133 @@
             z-index: 2;
         }
         
+        /* СТИЛИ ДЛЯ БОЛЬШОЙ КАРТОЧКИ ПРОЕКТА */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .project-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 
+                0 20px 40px rgba(16, 163, 127, 0.15),
+                0 0 0 1px var(--primary);
+        }
+        
+        .project-card:hover::before {
+            left: 0;
+            opacity: 0.05;
+        }
+        
+        .project-card.large-card {
+            grid-column: span 2;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .project-card-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .project-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        
+        .project-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .project-link {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            background: rgba(16, 163, 127, 0.1);
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .project-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .project-link.github {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+        
+        .project-link.github:hover {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+        }
+        
         .projects ul {
             list-style: none;
             max-width: 600px;
@@ -635,7 +762,7 @@
             left: 0;
         }
         
-        .project-link {
+        .project-link-text {
             color: var(--primary);
             font-weight: 600;
             text-decoration: none;
@@ -644,7 +771,7 @@
             cursor: pointer;
         }
         
-        .project-link:hover {
+        .project-link-text:hover {
             color: var(--primary-light);
             border-bottom-color: var(--primary);
         }
@@ -948,6 +1075,14 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-card.large-card {
+                grid-column: span 1;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1026,6 +1161,18 @@
             
             .nav-links a {
                 font-size: 0.9rem;
+            }
+            
+            .project-card {
+                padding: 2rem;
+            }
+            
+            .project-card h3 {
+                font-size: 1.5rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
             }
             
             .modal {
@@ -1144,6 +1291,18 @@
             
             .section h2 {
                 font-size: 1.8rem;
+            }
+            
+            .project-card {
+                padding: 1.5rem;
+            }
+            
+            .project-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .project-icon {
+                font-size: 2.5rem;
             }
             
             .projects li {
@@ -1352,20 +1511,66 @@
     <section class="section projects" id="projects">
         <div class="container">
             <h2>Мои Проекты</h2>
-            <ul>
-                <li onclick="openModal('roblox')">
-                    <span class="project-link">Игра на движке Roblox Studio</span>
-                    - Demon Legacy - RPG с кастомной графикой и механиками прокачки
-                </li>
-                <li onclick="openModal('telegram')">
-                    <span class="project-link">Telegram бот для управления задачами</span>
-                    - Бот для координации работы команды с уведомлениями
-                </li>
-                <li onclick="openModal('webapps')">
-                    <span class="project-link">Веб-приложения с базами данных</span>
-                    - Full-stack приложения с Python бэкендом и облачными БД
-                </li>
-            </ul>
+            <div class="projects-grid">
+                <!-- НОВАЯ КАРТОЧКА TASK MANAGER -->
+                <div class="project-card large-card" onclick="openModal('taskmanager')">
+                    <div class="project-card-content">
+                        <div class="project-icon">✅</div>
+                        <h3>Task Manager - FullStack приложение</h3>
+                        <p class="project-description">Полнофункциональное веб-приложение для управления задачами с возможностью создания, редактирования, удаления и фильтрации задач. Реализовано с использованием современного стека технологий.</p>
+                        
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Railway</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://taskmanager0.up.railway.app/" class="project-link" target="_blank">Открыть приложение</a>
+                            <a href="https://github.com/nikizi1234-ship-it/task-manager/tree/main" class="project-link github" target="_blank">Исходный код</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" onclick="openModal('roblox')">
+                    <div class="project-card-content">
+                        <div class="project-icon">🎮</div>
+                        <h3>Demon Legacy</h3>
+                        <p class="project-description">Multiplayer RPG игра на Roblox Studio с кастомной графикой и системой прокачки.</p>
+                        
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Lua</span>
+                            <span class="tech-tag">Roblox Studio</span>
+                            <span class="tech-tag">Blender</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://www.roblox.com/games/107962526921864/Demon-Legacy" class="project-link" target="_blank">Играть</a>
+                            <a href="https://github.com/nikizi1234-ship-it/roblox-game" class="project-link github" target="_blank">Исходный код</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" onclick="openModal('telegram')">
+                    <div class="project-card-content">
+                        <div class="project-icon">🤖</div>
+                        <h3>Telegram Task Bot</h3>
+                        <p class="project-description">Бот для управления задачами с уведомлениями и координацией работы команды.</p>
+                        
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">aiogram</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/nikizi1234-ship-it/task-manager-bot" class="project-link github" target="_blank">Исходный код</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1412,6 +1617,37 @@
 
     <script>
         const projectData = {
+            taskmanager: {
+                title: "Task Manager - FullStack приложение",
+                subtitle: "Веб-приложение для управления задачами с современным стеком технологий",
+                description: "Полнофункциональное FullStack приложение для управления задачами, разработанное с использованием FastAPI для бэкенда и React для фронтенда. Приложение включает регистрацию пользователей, создание, редактирование, удаление и фильтрацию задач, а также развертывание на облачной платформе Railway.",
+                techStack: ["Python", "FastAPI", "React", "PostgreSQL", "Docker", "Railway", "JWT Auth"],
+                features: [
+                    { title: "Управление задачами", description: "Создание, редактирование, удаление и фильтрация задач" },
+                    { title: "Аутентификация", description: "Регистрация и авторизация пользователей с JWT токенами" },
+                    { title: "Интерфейс", description: "Современный React интерфейс с адаптивным дизайном" },
+                    { title: "API", description: "REST API с полным набором CRUD операций" }
+                ],
+                achievements: [
+                    "Полностью рабочее FullStack приложение",
+                    "Успешный деплой на облачной платформе Railway",
+                    "Интеграция с PostgreSQL базой данных",
+                    "Реализована JWT аутентификация"
+                ],
+                hasSourceCode: true,
+                githubUrl: "https://github.com/nikizi1234-ship-it/task-manager/tree/main",
+                demoUrl: "https://taskmanager0.up.railway.app/",
+                media: ["images/taskmanager1.jpg", "images/taskmanager2.jpg", "images/taskmanager3.jpg"],
+                developmentSteps: [
+                    "Проектирование архитектуры приложения",
+                    "Разработка FastAPI бэкенда с JWT аутентификацией",
+                    "Создание React фронтенда с современным UI",
+                    "Настройка PostgreSQL базы данных",
+                    "Контейнеризация приложения с Docker",
+                    "Деплой на Railway и настройка CI/CD"
+                ],
+                outcome: "Создал полнофункциональное FullStack приложение, демонстрирующее навыки в разработке как бэкенда, так и фронтенда. Приложение успешно развернуто в production и доступно для использования."
+            },
             roblox: {
                 title: "Demon Legacy - Roblox RPG",
                 subtitle: "Multiplayer игра с кастомной графикой и системой прокачки",
@@ -1567,6 +1803,11 @@
                             Исходный код
                         </a>
                     ` : ''}
+                    ${project.demoUrl ? `
+                        <a href="${project.demoUrl}" class="project-button" target="_blank">
+                            Открыть приложение
+                        </a>
+                    ` : ''}
                     ${project.playUrl ? `
                         <a href="${project.playUrl}" class="project-button play" target="_blank">
                             Играть онлайн
@@ -1682,4 +1923,3 @@
     </script>
 </body>
 </html>
-
