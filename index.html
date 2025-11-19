@@ -208,7 +208,6 @@
             }
         }
 
-        /* НОВЫЙ СТИЛЬ ДЛЯ НАВЫКОВ */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -312,11 +311,9 @@
             font-weight: 500;
         }
 
-        /* ОБНОВЛЕННАЯ КАРУСЕЛЬ ДЛЯ УСЛУГ С СИЯНИЕМ */
         .services-section {
             background: linear-gradient(180deg, var(--bg-darker) 0%, rgba(16, 163, 127, 0.05) 100%);
             position: relative;
-            /* УБРАН overflow: hidden */
         }
         
         .services-section::before {
@@ -349,7 +346,6 @@
         .services-carousel {
             position: relative;
             width: 100%;
-            /* УБРАН overflow: hidden - это была основная проблема! */
             margin-top: 3rem;
             z-index: 2;
         }
@@ -374,7 +370,6 @@
             border-radius: 25px;
             border: 1px solid rgba(16, 163, 127, 0.3);
             position: relative;
-            /* УБРАН overflow: hidden */
             backdrop-filter: blur(10px);
             transition: all 0.4s ease;
         }
@@ -382,12 +377,12 @@
         .service-content::before {
             content: '';
             position: absolute;
-            top: -10px; /* Увеличили область свечения */
+            top: -10px;
             left: -10px;
             right: -10px;
             bottom: -10px;
             background: var(--gradient);
-            border-radius: 30px; /* Увеличили радиус для большей области */
+            border-radius: 30px;
             z-index: -1;
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -412,7 +407,7 @@
         }
         
         .service-content:hover::before {
-            opacity: 0.4; /* Увеличили непрозрачность для лучшего эффекта */
+            opacity: 0.4;
             animation: borderGlow 2s ease-in-out infinite;
         }
         
@@ -491,7 +486,7 @@
             margin-top: 3rem;
             z-index: 2;
             position: relative;
-            padding: 20px 0; /* Добавили отступы для сияния */
+            padding: 20px 0;
         }
         
         .indicator {
@@ -509,7 +504,7 @@
         .indicator::before {
             content: '';
             position: absolute;
-            top: -6px; /* Увеличили область сияния */
+            top: -6px;
             left: -6px;
             right: -6px;
             bottom: -6px;
@@ -596,7 +591,6 @@
             z-index: 2;
         }
         
-        /* СТИЛИ ДЛЯ БОЛЬШОЙ КАРТОЧКИ ПРОЕКТА */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -721,59 +715,6 @@
         .project-link.github:hover {
             background: var(--text-primary);
             color: var(--bg-dark);
-        }
-        
-        .projects ul {
-            list-style: none;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .projects li {
-            background: rgba(255,255,255,0.05);
-            margin: 20px 0;
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .projects li::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0.1;
-            transition: left 0.3s ease;
-        }
-        
-        .projects li:hover {
-            transform: translateX(10px);
-            border-color: var(--primary);
-        }
-        
-        .projects li:hover::before {
-            left: 0;
-        }
-        
-        .project-link-text {
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .project-link-text:hover {
-            color: var(--primary-light);
-            border-bottom-color: var(--primary);
         }
         
         .no-content {
@@ -1069,7 +1010,6 @@
             color: var(--text-secondary);
         }
         
-        /* АДАПТИВНОСТЬ */
         @media (max-width: 1024px) {
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1105,7 +1045,7 @@
             
             .service-content {
                 padding: 3rem 2rem;
-                margin: 0 1rem; /* Добавили отступы по бокам */
+                margin: 0 1rem;
             }
             
             .service-content::before {
@@ -1305,10 +1245,6 @@
                 font-size: 2.5rem;
             }
             
-            .projects li {
-                padding: 20px;
-            }
-            
             .modal-header {
                 padding: 1rem 1rem 0.5rem;
             }
@@ -1351,7 +1287,6 @@
         </div>
     </section>
 
-    <!-- НОВЫЙ РАЗДЕЛ НАВЫКОВ -->
     <section class="section" id="skills">
         <div class="container">
             <h2>Мои Навыки</h2>
@@ -1455,7 +1390,6 @@
         </div>
     </section>
 
-    <!-- ОБНОВЛЕННАЯ КАРУСЕЛЬ ДЛЯ УСЛУГ С СИЯНИЕМ -->
     <section class="section services-section" id="services">
         <div class="container">
             <h2>Услуги</h2>
@@ -1512,19 +1446,60 @@
         <div class="container">
             <h2>Мои Проекты</h2>
             <div class="projects-grid">
-                <!-- НОВАЯ КАРТОЧКА TASK MANAGER -->
-                <div class="project-card large-card" onclick="openModal('taskmanager')">
+                <!-- Demon Legacy - первый проект -->
+                <div class="project-card large-card" onclick="openModal('roblox')">
+                    <div class="project-card-content">
+                        <div class="project-icon">🎮</div>
+                        <h3>Demon Legacy - Roblox RPG</h3>
+                        <p class="project-description">Multiplayer RPG игра с кастомной графикой, сложной экономической системой и продвинутой механикой прокачки. Более 1000 активных игроков и рейтинг 4.8/5.</p>
+                        
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Lua</span>
+                            <span class="tech-tag">Roblox Studio</span>
+                            <span class="tech-tag">Blender</span>
+                            <span class="tech-tag">Game Design</span>
+                            <span class="tech-tag">Multiplayer</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://www.roblox.com/games/107962526921864/Demon-Legacy" class="project-link" target="_blank">Играть онлайн</a>
+                            <a href="https://github.com/nikizi1234-ship-it/roblox-game" class="project-link github" target="_blank">Исходный код</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Telegram Bot - второй проект -->
+                <div class="project-card" onclick="openModal('telegram')">
+                    <div class="project-card-content">
+                        <div class="project-icon">🤖</div>
+                        <h3>Telegram Task Bot</h3>
+                        <p class="project-description">Умный бот для управления задачами с системой уведомлений, координацией работы команды и автоматическими напоминаниями о дедлайнах.</p>
+                        
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">aiogram</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/nikizi1234-ship-it/task-manager-bot" class="project-link github" target="_blank">Исходный код</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Task Manager - третий проект -->
+                <div class="project-card" onclick="openModal('taskmanager')">
                     <div class="project-card-content">
                         <div class="project-icon">✅</div>
-                        <h3>Task Manager - FullStack приложение</h3>
-                        <p class="project-description">Полнофункциональное веб-приложение для управления задачами с возможностью создания, редактирования, удаления и фильтрации задач. Реализовано с использованием современного стека технологий.</p>
+                        <h3>Task Manager</h3>
+                        <p class="project-description">FullStack приложение для управления задачами с современным React интерфейсом, FastAPI бэкендом и развертыванием на облачной платформе.</p>
                         
                         <div class="project-tech-stack">
                             <span class="tech-tag">FastAPI</span>
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">PostgreSQL</span>
                             <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Railway</span>
                         </div>
                         
                         <div class="project-links">
@@ -1533,40 +1508,26 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="project-card" onclick="openModal('roblox')">
+
+                <!-- DevNet Messenger - новый четвертый проект -->
+                <div class="project-card large-card" onclick="openModal('devnet')">
                     <div class="project-card-content">
-                        <div class="project-icon">🎮</div>
-                        <h3>Demon Legacy</h3>
-                        <p class="project-description">Multiplayer RPG игра на Roblox Studio с кастомной графикой и системой прокачки.</p>
+                        <div class="project-icon">💬</div>
+                        <h3>DevNet Messenger</h3>
+                        <p class="project-description">Современный мессенджер для разработчиков с WebSocket соединениями, реальным временем, системой комнат и продвинутой архитектурой на FastAPI + PostgreSQL.</p>
                         
                         <div class="project-tech-stack">
-                            <span class="tech-tag">Lua</span>
-                            <span class="tech-tag">Roblox Studio</span>
-                            <span class="tech-tag">Blender</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">JWT Auth</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Docker</span>
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://www.roblox.com/games/107962526921864/Demon-Legacy" class="project-link" target="_blank">Играть</a>
-                            <a href="https://github.com/nikizi1234-ship-it/roblox-game" class="project-link github" target="_blank">Исходный код</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" onclick="openModal('telegram')">
-                    <div class="project-card-content">
-                        <div class="project-icon">🤖</div>
-                        <h3>Telegram Task Bot</h3>
-                        <p class="project-description">Бот для управления задачами с уведомлениями и координацией работы команды.</p>
-                        
-                        <div class="project-tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">aiogram</span>
-                            <span class="tech-tag">SQLite</span>
-                        </div>
-                        
-                        <div class="project-links">
-                            <a href="https://github.com/nikizi1234-ship-it/task-manager-bot" class="project-link github" target="_blank">Исходный код</a>
+                            <a href="https://devnetmessager-production.up.railway.app/" class="project-link" target="_blank">Открыть мессенджер</a>
+                            <a href="https://github.com/nikizi1234-ship-it/devnet-messenger" class="project-link github" target="_blank">Исходный код</a>
                         </div>
                     </div>
                 </div>
@@ -1617,37 +1578,6 @@
 
     <script>
         const projectData = {
-            taskmanager: {
-                title: "Task Manager - FullStack приложение",
-                subtitle: "Веб-приложение для управления задачами с современным стеком технологий",
-                description: "Полнофункциональное FullStack приложение для управления задачами, разработанное с использованием FastAPI для бэкенда и React для фронтенда. Приложение включает регистрацию пользователей, создание, редактирование, удаление и фильтрацию задач, а также развертывание на облачной платформе Railway.",
-                techStack: ["Python", "FastAPI", "React", "PostgreSQL", "Docker", "Railway", "JWT Auth"],
-                features: [
-                    { title: "Управление задачами", description: "Создание, редактирование, удаление и фильтрация задач" },
-                    { title: "Аутентификация", description: "Регистрация и авторизация пользователей с JWT токенами" },
-                    { title: "Интерфейс", description: "Современный React интерфейс с адаптивным дизайном" },
-                    { title: "API", description: "REST API с полным набором CRUD операций" }
-                ],
-                achievements: [
-                    "Полностью рабочее FullStack приложение",
-                    "Успешный деплой на облачной платформе Railway",
-                    "Интеграция с PostgreSQL базой данных",
-                    "Реализована JWT аутентификация"
-                ],
-                hasSourceCode: true,
-                githubUrl: "https://github.com/nikizi1234-ship-it/task-manager/tree/main",
-                demoUrl: "https://taskmanager0.up.railway.app/",
-                media: ["images/taskmanager1.jpg", "images/taskmanager2.jpg", "images/taskmanager3.jpg"],
-                developmentSteps: [
-                    "Проектирование архитектуры приложения",
-                    "Разработка FastAPI бэкенда с JWT аутентификацией",
-                    "Создание React фронтенда с современным UI",
-                    "Настройка PostgreSQL базы данных",
-                    "Контейнеризация приложения с Docker",
-                    "Деплой на Railway и настройка CI/CD"
-                ],
-                outcome: "Создал полнофункциональное FullStack приложение, демонстрирующее навыки в разработке как бэкенда, так и фронтенда. Приложение успешно развернуто в production и доступно для использования."
-            },
             roblox: {
                 title: "Demon Legacy - Roblox RPG",
                 subtitle: "Multiplayer игра с кастомной графикой и системой прокачки",
@@ -1702,27 +1632,67 @@
                 ],
                 outcome: "Бот успешно используется для координации работы в команде, демонстрирует навыки backend-разработки и работы с Telegram API."
             },
-            webapps: {
-                title: "Веб-приложения с базами данных",
-                subtitle: "Full-stack разработка с Python бэкендом",
-                description: "Разработал несколько полноценных веб-приложений с использованием современного стека технологий. Каждое приложение включает бэкенд на Python, фронтенд и облачную базу данных.",
-                techStack: ["Python", "FastAPI", "MySQL", "JavaScript", "Yandex Cloud"],
+            taskmanager: {
+                title: "Task Manager - FullStack приложение",
+                subtitle: "Веб-приложение для управления задачами с современным стеком технологий",
+                description: "Полнофункциональное FullStack приложение для управления задачами, разработанное с использованием FastAPI для бэкенда и React для фронтенда. Приложение включает регистрацию пользователей, создание, редактирование, удаление и фильтрацию задач, а также развертывание на облачной платформе Railway.",
+                techStack: ["Python", "FastAPI", "React", "PostgreSQL", "Docker", "Railway", "JWT Auth"],
                 features: [
-                    { title: "Менеджер задач", description: "REST API с аутентификацией и CRUD операциями", stack: "FastAPI + MySQL" },
-                    { title: "E-commerce API", description: "Система заказов с базой данных", stack: "Django + PostgreSQL" },
-                    { title: "Аналитика", description: "Визуализация данных из различных источников", stack: "Flask + Pandas" }
+                    { title: "Управление задачами", description: "Создание, редактирование, удаление и фильтрация задач" },
+                    { title: "Аутентификация", description: "Регистрация и авторизация пользователей с JWT токенами" },
+                    { title: "Интерфейс", description: "Современный React интерфейс с адаптивным дизайном" },
+                    { title: "API", description: "REST API с полным набором CRUD операций" }
+                ],
+                achievements: [
+                    "Полностью рабочее FullStack приложение",
+                    "Успешный деплой на облачной платформе Railway",
+                    "Интеграция с PostgreSQL базой данных",
+                    "Реализована JWT аутентификация"
                 ],
                 hasSourceCode: true,
-                githubUrl: "https://github.com/nikizi1234-ship-it/web-applications",
-                media: ["images/webapp1.jpg", "images/webapp2.jpg", "images/webapp3.jpg"],
+                githubUrl: "https://github.com/nikizi1234-ship-it/task-manager/tree/main",
+                demoUrl: "https://taskmanager0.up.railway.app/",
+                media: ["images/taskmanager1.jpg", "images/taskmanager2.jpg", "images/taskmanager3.jpg"],
                 developmentSteps: [
                     "Проектирование архитектуры приложения",
-                    "Разработка REST API на Python",
-                    "Настройка облачной базы данных",
-                    "Создание фронтенд интерфейса",
-                    "Деплой и мониторинг"
+                    "Разработка FastAPI бэкенда с JWT аутентификацией",
+                    "Создание React фронтенда с современным UI",
+                    "Настройка PostgreSQL базы данных",
+                    "Контейнеризация приложения с Docker",
+                    "Деплой на Railway и настройка CI/CD"
                 ],
-                outcome: "Приложения демонстрируют полный цикл разработки от идеи до production, подтверждают навыки в full-stack разработке."
+                outcome: "Создал полнофункциональное FullStack приложение, демонстрирующее навыки в разработке как бэкенда, так и фронтенда. Приложение успешно развернуто в production и доступно для использования."
+            },
+            devnet: {
+                title: "DevNet Messenger",
+                subtitle: "Современный мессенджер для разработчиков с реальным временем",
+                description: "Полнофункциональный мессенджер с WebSocket соединениями для мгновенной передачи сообщений. Архитектура включает FastAPI бэкенд, PostgreSQL для хранения данных, Redis для кэширования и онлайн-статусов, и современный фронтенд.",
+                techStack: ["Python", "FastAPI", "WebSocket", "PostgreSQL", "Redis", "JWT", "Docker", "Railway"],
+                features: [
+                    { title: "Real-time сообщения", description: "Мгновенная доставка через WebSocket соединения" },
+                    { title: "Онлайн-статусы", description: "Отслеживание активности пользователей в реальном времени" },
+                    { title: "Безопасность", description: "JWT аутентификация и защита данных" },
+                    { title: "Масштабируемость", description: "Архитектура готова к росту пользователей" }
+                ],
+                achievements: [
+                    "Работающие WebSocket соединения",
+                    "Успешный деплой на Railway",
+                    "Интеграция с PostgreSQL и Redis",
+                    "Полная система аутентификации"
+                ],
+                hasSourceCode: true,
+                githubUrl: "https://github.com/nikizi1234-ship-it/devnet-messenger",
+                demoUrl: "https://devnetmessager-production.up.railway.app/",
+                media: ["images/devnet1.jpg", "images/devnet2.jpg", "images/devnet3.jpg"],
+                developmentSteps: [
+                    "Проектирование WebSocket архитектуры",
+                    "Разработка FastAPI бэкенда с real-time функциональностью",
+                    "Интеграция PostgreSQL для хранения сообщений",
+                    "Настройка Redis для онлайн-статусов и кэширования",
+                    "Создание системы аутентификации",
+                    "Деплой и оптимизация производительности"
+                ],
+                outcome: "Создал полнофункциональный мессенджер, демонстрирующий продвинутые навыки в real-time разработке и работе с WebSocket. Проект показывает понимание сложных архитектурных решений и готов к промышленному использованию."
             }
         };
 
@@ -1732,7 +1702,6 @@
         const serviceIndicators = document.getElementById('serviceIndicators');
 
         function initializeServicesCarousel() {
-            // Создаем индикаторы
             const items = servicesTrack.children;
             for (let i = 0; i < items.length; i++) {
                 const indicator = document.createElement('button');
@@ -1758,7 +1727,6 @@
             const translateX = -currentServiceIndex * 100;
             servicesTrack.style.transform = `translateX(${translateX}%)`;
             
-            // Обновляем индикаторы
             const indicators = serviceIndicators.children;
             for (let i = 0; i < indicators.length; i++) {
                 indicators[i].className = `indicator ${i === currentServiceIndex ? 'active' : ''}`;
@@ -1789,7 +1757,6 @@
                         <div class="feature-card">
                             <h3>${feature.title}</h3>
                             <p>${feature.description}</p>
-                            ${feature.stack ? `<small style="color: var(--text-muted);">${feature.stack}</small>` : ''}
                         </div>
                     `).join('')}
                 </div>
@@ -1825,15 +1792,6 @@
                 `;
             }
 
-            if (project.functionality) {
-                content += `
-                    <h3>Функциональность</h3>
-                    <ul>
-                        ${project.functionality.map(func => `<li>${func}</li>`).join('')}
-                    </ul>
-                `;
-            }
-
             modalContent.innerHTML = content;
             modalOverlay.classList.add('active');
         }
@@ -1855,19 +1813,6 @@
                 <h3>Итоговый результат</h3>
                 <p>${project.outcome}</p>
             `;
-
-            if (project.media && project.media.length > 0) {
-                outcomeContent += `
-                    <h3>Медиа проекта</h3>
-                    <div class="media-gallery">
-                        ${project.media.map(media => `
-                            <div class="media-item">
-                                <img src="${media}" alt="Проект ${project.title}" onerror="this.style.display='none'">
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-            }
 
             outcomeContent += `
                 <div style="margin-top: 2rem;">
