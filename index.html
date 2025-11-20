@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Никита Молодцов - Портфолио</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet>
     <style>
         * {
             margin: 0;
@@ -208,6 +208,7 @@
             }
         }
 
+        /* НОВЫЙ СТИЛЬ ДЛЯ НАВЫКОВ */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -311,6 +312,7 @@
             font-weight: 500;
         }
 
+        /* ОБНОВЛЕННАЯ КАРУСЕЛЬ ДЛЯ УСЛУГ С СИЯНИЕМ */
         .services-section {
             background: linear-gradient(180deg, var(--bg-darker) 0%, rgba(16, 163, 127, 0.05) 100%);
             position: relative;
@@ -591,6 +593,7 @@
             z-index: 2;
         }
         
+        /* СТИЛИ ДЛЯ БОЛЬШОЙ КАРТОЧКИ ПРОЕКТА */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -681,6 +684,15 @@
             margin-bottom: 2rem;
         }
         
+        .tech-tag {
+            background: rgba(16, 163, 127, 0.2);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid var(--primary);
+        }
+        
         .project-links {
             display: flex;
             gap: 1rem;
@@ -715,6 +727,59 @@
         .project-link.github:hover {
             background: var(--text-primary);
             color: var(--bg-dark);
+        }
+        
+        .projects ul {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .projects li {
+            background: rgba(255,255,255,0.05);
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .projects li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.1;
+            transition: left 0.3s ease;
+        }
+        
+        .projects li:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+        }
+        
+        .projects li:hover::before {
+            left: 0;
+        }
+        
+        .project-link-text {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-link-text:hover {
+            color: var(--primary-light);
+            border-bottom-color: var(--primary);
         }
         
         .no-content {
@@ -853,15 +918,6 @@
             flex-wrap: wrap;
             gap: 0.8rem;
             margin: 1.5rem 0;
-        }
-        
-        .tech-tag {
-            background: rgba(16, 163, 127, 0.2);
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid var(--primary);
         }
         
         .project-features {
@@ -1010,6 +1066,7 @@
             color: var(--text-secondary);
         }
         
+        /* АДАПТИВНОСТЬ */
         @media (max-width: 1024px) {
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1245,6 +1302,10 @@
                 font-size: 2.5rem;
             }
             
+            .projects li {
+                padding: 20px;
+            }
+            
             .modal-header {
                 padding: 1rem 1rem 0.5rem;
             }
@@ -1287,6 +1348,7 @@
         </div>
     </section>
 
+    <!-- НОВЫЙ РАЗДЕЛ НАВЫКОВ -->
     <section class="section" id="skills">
         <div class="container">
             <h2>Мои Навыки</h2>
@@ -1390,6 +1452,7 @@
         </div>
     </section>
 
+    <!-- ОБНОВЛЕННАЯ КАРУСЕЛЬ ДЛЯ УСЛУГ С СИЯНИЕМ -->
     <section class="section services-section" id="services">
         <div class="container">
             <h2>Услуги</h2>
@@ -1446,54 +1509,56 @@
         <div class="container">
             <h2>Мои Проекты</h2>
             <div class="projects-grid">
-                <!-- Demon Legacy - первый проект -->
+                <!-- Demon Legacy - самый сложный проект -->
                 <div class="project-card large-card" onclick="openModal('roblox')">
                     <div class="project-card-content">
                         <div class="project-icon">🎮</div>
                         <h3>Demon Legacy - Roblox RPG</h3>
-                        <p class="project-description">Multiplayer RPG игра с кастомной графикой, сложной экономической системой и продвинутой механикой прокачки. Более 1000 активных игроков и рейтинг 4.8/5.</p>
+                        <p class="project-description">Multiplayer RPG игра на Roblox Studio с кастомной графикой и системой прокачки. Создал сложную экономическую систему, инвентарь, 3-5 уникальных способностей и взаимодействие между игроками. Игра включает кастомную графику из Blender и продвинутую систему камер.</p>
                         
                         <div class="project-tech-stack">
                             <span class="tech-tag">Lua</span>
                             <span class="tech-tag">Roblox Studio</span>
                             <span class="tech-tag">Blender</span>
-                            <span class="tech-tag">Game Design</span>
                             <span class="tech-tag">Multiplayer</span>
+                            <span class="tech-tag">Game Design</span>
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://www.roblox.com/games/107962526921864/Demon-Legacy" class="project-link" target="_blank">Играть онлайн</a>
+                            <a href="https://www.roblox.com/games/107962526921864/Demon-Legacy" class="project-link" target="_blank">Играть</a>
                             <a href="https://github.com/nikizi1234-ship-it/roblox-game" class="project-link github" target="_blank">Исходный код</a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Telegram Bot - второй проект -->
-                <div class="project-card" onclick="openModal('telegram')">
+                <!-- DevNet Messenger - новый проект -->
+                <div class="project-card large-card" onclick="openModal('devnet')">
                     <div class="project-card-content">
-                        <div class="project-icon">🤖</div>
-                        <h3>Telegram Task Bot</h3>
-                        <p class="project-description">Умный бот для управления задачами с системой уведомлений, координацией работы команды и автоматическими напоминаниями о дедлайнах.</p>
+                        <div class="project-icon">💬</div>
+                        <h3>DevNet Messenger</h3>
+                        <p class="project-description">Полнофункциональный веб-мессенджер с реальным временем обмена сообщениями. Реализован с использованием WebSocket для мгновенной доставки сообщений, JWT аутентификации, управления пользователями и истории сообщений. Включает систему статусов онлайн/офлайн и возможность удаления чатов.</p>
                         
                         <div class="project-tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">aiogram</span>
-                            <span class="tech-tag">SQLite</span>
-                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">SQLAlchemy</span>
+                            <span class="tech-tag">JWT Auth</span>
+                            <span class="tech-tag">Railway</span>
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://github.com/nikizi1234-ship-it/task-manager-bot" class="project-link github" target="_blank">Исходный код</a>
+                            <a href="https://devnetmessager-production.up.railway.app/" class="project-link" target="_blank">Открыть приложение</a>
+                            <a href="https://github.com/nikizi1234-ship-it/DevNetMessager/tree/main" class="project-link github" target="_blank">Исходный код</a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Task Manager - третий проект -->
+                <!-- Task Manager -->
                 <div class="project-card" onclick="openModal('taskmanager')">
                     <div class="project-card-content">
                         <div class="project-icon">✅</div>
                         <h3>Task Manager</h3>
-                        <p class="project-description">FullStack приложение для управления задачами с современным React интерфейсом, FastAPI бэкендом и развертыванием на облачной платформе.</p>
+                        <p class="project-description">Полнофункциональное веб-приложение для управления задачами с возможностью создания, редактирования, удаления и фильтрации задач. Реализовано с использованием современного стека технологий.</p>
                         
                         <div class="project-tech-stack">
                             <span class="tech-tag">FastAPI</span>
@@ -1508,26 +1573,22 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- DevNet Messenger - новый четвертый проект -->
-                <div class="project-card large-card" onclick="openModal('devnet')">
+                
+                <!-- Telegram Bot -->
+                <div class="project-card" onclick="openModal('telegram')">
                     <div class="project-card-content">
-                        <div class="project-icon">💬</div>
-                        <h3>DevNet Messenger</h3>
-                        <p class="project-description">Современный мессенджер для разработчиков с WebSocket соединениями, реальным временем, системой комнат и продвинутой архитектурой на FastAPI + PostgreSQL.</p>
+                        <div class="project-icon">🤖</div>
+                        <h3>Telegram Task Bot</h3>
+                        <p class="project-description">Бот для управления задачами с уведомлениями и координацией работы команды. Позволяет создавать, назначать и отслеживать задачи, получать уведомления о дедлайнах и координировать работу между участниками проекта.</p>
                         
                         <div class="project-tech-stack">
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">WebSocket</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">JWT Auth</span>
-                            <span class="tech-tag">Redis</span>
-                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">aiogram</span>
+                            <span class="tech-tag">SQLite</span>
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://devnetmessager-production.up.railway.app/" class="project-link" target="_blank">Открыть мессенджер</a>
-                            <a href="https://github.com/nikizi1234-ship-it/devnet-messenger" class="project-link github" target="_blank">Исходный код</a>
+                            <a href="https://github.com/nikizi1234-ship-it/task-manager-bot" class="project-link github" target="_blank">Исходный код</a>
                         </div>
                     </div>
                 </div>
@@ -1609,28 +1670,36 @@
                 ],
                 outcome: "Создал работающий MVP игры с полноценным геймплеем. Проект демонстрирует навыки в геймдизайне, 3D-моделировании и разработке сложных игровых систем. Игра доступна для тестирования и получила положительные отзывы игроков."
             },
-            telegram: {
-                title: "Telegram бот для управления задачами",
-                subtitle: "Координация работы команды с системой уведомлений",
-                description: "Разработал Telegram бота для управления задачами проекта. Бот помогает команде координировать работу, назначать задачи и получать уведомления о статусе выполнения.",
-                techStack: ["Python", "aiogram", "SQLite", "REST API"],
+            devnet: {
+                title: "DevNet Messenger",
+                subtitle: "Веб-мессенджер с реальным временем обмена сообщениями",
+                description: "Разработал полнофункциональный веб-мессенджер с использованием FastAPI и WebSocket для мгновенной доставки сообщений. Система включает регистрацию пользователей, JWT аутентификацию, управление статусами онлайн/офлайн, историю сообщений и возможность удаления чатов. Приложение развернуто на Railway и полностью готово к использованию.",
+                techStack: ["Python", "FastAPI", "WebSocket", "SQLAlchemy", "JWT Auth", "SQLite", "Railway"],
                 features: [
-                    { title: "Управление задачами", description: "Создание, назначение и отслеживание задач" },
-                    { title: "Уведомления", description: "Автоматические оповещения о дедлайнах" },
-                    { title: "Командная работа", description: "Координация между участниками проекта" }
+                    { title: "Real-time сообщения", description: "Мгновенная доставка сообщений через WebSocket" },
+                    { title: "Аутентификация", description: "JWT токены для безопасного доступа" },
+                    { title: "Статусы пользователей", description: "Отображение онлайн/офлайн статусов" },
+                    { title: "История сообщений", description: "Полная история переписки с возможностью удаления" }
                 ],
-                functionality: ["Назначение задач участникам", "Уведомления о дедлайнах", "Отслеживание прогресса", "Статистика выполнения"],
+                achievements: [
+                    "Работающий веб-мессенджер с реальным временем",
+                    "Успешный деплой на облачной платформе Railway",
+                    "Полная JWT аутентификация и авторизация",
+                    "WebSocket для мгновенной доставки сообщений"
+                ],
                 hasSourceCode: true,
-                githubUrl: "https://github.com/nikizi1234-ship-it/task-manager-bot",
-                media: ["images/telegram-bot1.jpg", "images/telegram-bot2.jpg"],
+                githubUrl: "https://github.com/nikizi1234-ship-it/DevNetMessager/tree/main",
+                demoUrl: "https://devnetmessager-production.up.railway.app/",
+                media: ["images/devnet1.jpg", "images/devnet2.jpg", "images/devnet3.jpg"],
                 developmentSteps: [
-                    "Проектирование архитектуры бота",
-                    "Разработка системы команд на Python",
+                    "Проектирование архитектуры мессенджера",
+                    "Разработка FastAPI бэкенда с WebSocket",
+                    "Реализация JWT аутентификации",
+                    "Создание системы статусов пользователей",
                     "Интеграция с базой данных SQLite",
-                    "Реализация системы уведомлений",
-                    "Тестирование и деплой"
+                    "Деплой на Railway и тестирование"
                 ],
-                outcome: "Бот успешно используется для координации работы в команде, демонстрирует навыки backend-разработки и работы с Telegram API."
+                outcome: "Создал полнофункциональный веб-мессенджер, демонстрирующий навыки в разработке real-time приложений, работе с WebSocket и создании безопасных систем аутентификации. Приложение успешно развернуто и готово к использованию."
             },
             taskmanager: {
                 title: "Task Manager - FullStack приложение",
@@ -1663,36 +1732,28 @@
                 ],
                 outcome: "Создал полнофункциональное FullStack приложение, демонстрирующее навыки в разработке как бэкенда, так и фронтенда. Приложение успешно развернуто в production и доступно для использования."
             },
-            devnet: {
-                title: "DevNet Messenger",
-                subtitle: "Современный мессенджер для разработчиков с реальным временем",
-                description: "Полнофункциональный мессенджер с WebSocket соединениями для мгновенной передачи сообщений. Архитектура включает FastAPI бэкенд, PostgreSQL для хранения данных, Redis для кэширования и онлайн-статусов, и современный фронтенд.",
-                techStack: ["Python", "FastAPI", "WebSocket", "PostgreSQL", "Redis", "JWT", "Docker", "Railway"],
+            telegram: {
+                title: "Telegram бот для управления задачами",
+                subtitle: "Координация работы команды с системой уведомлений",
+                description: "Разработал Telegram бота для управления задачами проекта. Бот помогает команде координировать работу, назначать задачи и получать уведомления о статусе выполнения.",
+                techStack: ["Python", "aiogram", "SQLite", "REST API"],
                 features: [
-                    { title: "Real-time сообщения", description: "Мгновенная доставка через WebSocket соединения" },
-                    { title: "Онлайн-статусы", description: "Отслеживание активности пользователей в реальном времени" },
-                    { title: "Безопасность", description: "JWT аутентификация и защита данных" },
-                    { title: "Масштабируемость", description: "Архитектура готова к росту пользователей" }
+                    { title: "Управление задачами", description: "Создание, назначение и отслеживание задач" },
+                    { title: "Уведомления", description: "Автоматические оповещения о дедлайнах" },
+                    { title: "Командная работа", description: "Координация между участниками проекта" }
                 ],
-                achievements: [
-                    "Работающие WebSocket соединения",
-                    "Успешный деплой на Railway",
-                    "Интеграция с PostgreSQL и Redis",
-                    "Полная система аутентификации"
-                ],
+                functionality: ["Назначение задач участникам", "Уведомления о дедлайнах", "Отслеживание прогресса", "Статистика выполнения"],
                 hasSourceCode: true,
-                githubUrl: "https://github.com/nikizi1234-ship-it/devnet-messenger",
-                demoUrl: "https://devnetmessager-production.up.railway.app/",
-                media: ["images/devnet1.jpg", "images/devnet2.jpg", "images/devnet3.jpg"],
+                githubUrl: "https://github.com/nikizi1234-ship-it/task-manager-bot",
+                media: ["images/telegram-bot1.jpg", "images/telegram-bot2.jpg"],
                 developmentSteps: [
-                    "Проектирование WebSocket архитектуры",
-                    "Разработка FastAPI бэкенда с real-time функциональностью",
-                    "Интеграция PostgreSQL для хранения сообщений",
-                    "Настройка Redis для онлайн-статусов и кэширования",
-                    "Создание системы аутентификации",
-                    "Деплой и оптимизация производительности"
+                    "Проектирование архитектуры бота",
+                    "Разработка системы команд на Python",
+                    "Интеграция с базой данных SQLite",
+                    "Реализация системы уведомлений",
+                    "Тестирование и деплой"
                 ],
-                outcome: "Создал полнофункциональный мессенджер, демонстрирующий продвинутые навыки в real-time разработке и работе с WebSocket. Проект показывает понимание сложных архитектурных решений и готов к промышленному использованию."
+                outcome: "Бот успешно используется для координации работы в команде, демонстрирует навыки backend-разработки и работы с Telegram API."
             }
         };
 
@@ -1702,6 +1763,7 @@
         const serviceIndicators = document.getElementById('serviceIndicators');
 
         function initializeServicesCarousel() {
+            // Создаем индикаторы
             const items = servicesTrack.children;
             for (let i = 0; i < items.length; i++) {
                 const indicator = document.createElement('button');
@@ -1727,6 +1789,7 @@
             const translateX = -currentServiceIndex * 100;
             servicesTrack.style.transform = `translateX(${translateX}%)`;
             
+            // Обновляем индикаторы
             const indicators = serviceIndicators.children;
             for (let i = 0; i < indicators.length; i++) {
                 indicators[i].className = `indicator ${i === currentServiceIndex ? 'active' : ''}`;
@@ -1757,6 +1820,7 @@
                         <div class="feature-card">
                             <h3>${feature.title}</h3>
                             <p>${feature.description}</p>
+                            ${feature.stack ? `<small style="color: var(--text-muted);">${feature.stack}</small>` : ''}
                         </div>
                     `).join('')}
                 </div>
@@ -1792,6 +1856,15 @@
                 `;
             }
 
+            if (project.functionality) {
+                content += `
+                    <h3>Функциональность</h3>
+                    <ul>
+                        ${project.functionality.map(func => `<li>${func}</li>`).join('')}
+                    </ul>
+                `;
+            }
+
             modalContent.innerHTML = content;
             modalOverlay.classList.add('active');
         }
@@ -1813,6 +1886,19 @@
                 <h3>Итоговый результат</h3>
                 <p>${project.outcome}</p>
             `;
+
+            if (project.media && project.media.length > 0) {
+                outcomeContent += `
+                    <h3>Медиа проекта</h3>
+                    <div class="media-gallery">
+                        ${project.media.map(media => `
+                            <div class="media-item">
+                                <img src="${media}" alt="Проект ${project.title}" onerror="this.style.display='none'">
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
 
             outcomeContent += `
                 <div style="margin-top: 2rem;">
