@@ -60,7 +60,7 @@
                         <span class="level-text">Продвинутый</span>
                     </div>
                 </div>
-                <!-- Остальные карточки навыков следуют тому же шаблону -->
+                <!-- Остальные карточки навыков -->
                 <div class="skill-card fade-in">
                     <div class="skill-icon"><i class="fas fa-database"></i></div>
                     <h3>3D печать</h3>
@@ -132,7 +132,7 @@
             <div class="services-carousel">
                 <button class="carousel-nav prev" onclick="moveServiceCarousel(-1)">‹</button>
                 <div class="services-track" id="servicesTrack">
-                    <!-- Слайды услуг (3 штуки) -->
+                    <!-- Слайд 1: Backend -->
                     <div class="service-item">
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-rocket"></i></div>
@@ -146,6 +146,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Слайд 2: 3D модели -->
                     <div class="service-item">
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
@@ -159,10 +160,11 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Слайд 3: Микроконтроллеры (добавлен статус "Скоро") -->
                     <div class="service-item">
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                            <h3>Программирование микроконтроллеров</h3>
+                            <h3>Программирование микроконтроллеров <span class="service-status"><i class="fas fa-clock"></i> Скоро</span></h3>
                             <p>Программирую разные микроконтроллеры серии Arduino и другие на языке программирования C++ для выполнения кода в ту же долю секунды, библиотеки с нуля создавать было бы нецелесообразно, а вот использовать — верное решение.</p>
                             <div class="service-features">
                                 <span class="service-feature">С++</span>
@@ -179,12 +181,11 @@
         </div>
     </section>
 
-    <!-- Секция проектов -->
+    <!-- Секция проектов (без изменений) -->
     <section class="section projects" id="projects">
         <div class="container">
             <h2>Мои Проекты</h2>
             <div class="projects-grid">
-                <!-- Проект Roblox (крупная карточка) -->
                 <div class="project-card large-card fade-in" onclick="openModal('roblox')">
                     <div class="project-card-content">
                         <div class="project-icon"><i class="fas fa-gamepad"></i></div>
@@ -203,7 +204,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Проект DevNet Messenger (приостановлен) -->
                 <div class="project-card large-card fade-in" onclick="openModal('devnet')">
                     <div class="project-card-content">
                         <div class="project-icon"><i class="fas fa-comments"></i></div>
@@ -222,7 +222,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Проект AirFlow -->
                 <div class="project-card large-card fade-in" onclick="openModal('airflow')">
                     <div class="project-card-content">
                         <div class="project-icon"><i class="fas fa-helicopter"></i></div>
@@ -245,7 +244,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Проект Task Manager -->
                 <div class="project-card fade-in" onclick="openModal('taskmanager')">
                     <div class="project-card-content">
                         <div class="project-icon"><i class="fas fa-tasks"></i></div>
@@ -263,7 +261,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Проект Telegram бот -->
                 <div class="project-card fade-in" onclick="openModal('telegram')">
                     <div class="project-card-content">
                         <div class="project-icon"><i class="fab fa-telegram"></i></div>
@@ -283,7 +280,7 @@
         </div>
     </section>
 
-    <!-- Секции дипломов и отзывов (заглушки) -->
+    <!-- Секции дипломов и отзывов -->
     <section class="section diplomas" id="diplomas">
         <div class="container">
             <h2>Дипломы и Сертификаты</h2>
@@ -324,7 +321,7 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- Модальное окно (изначально скрыто) -->
+    <!-- Модальное окно -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <div class="modal-header">
@@ -335,7 +332,6 @@
         </div>
     </div>
 
-    <!-- Подключение скрипта в конце body -->
     <script src="script.js"></script>
 </body>
 </html>
