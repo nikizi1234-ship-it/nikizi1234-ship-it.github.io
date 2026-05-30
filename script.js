@@ -43,20 +43,20 @@ const projectData = {
         title: "AF (Air Flow)",
         subtitle: "Автономный дрон-доставщик",
         description: "Инженерный эксперимент по созданию дрона...",
-        techStack: ["C++ (STM32)", "Python (FastAPI)", "Raspberry Pi", "MAVLink", "nRF24L01+", "Kakute H7", "3D-печать", "Blender"],
+        techStack: ["C++ (STM32)", "Python (FastAPI)", "Raspberry Pi 5", "MAVLink", "nRF24L01+", "Kakute H7", "3D-печать", "FreeCAD","Bambu Lab A1 Mini"],
         developmentStages: [
             { stage: "Земля1", description: "Стенд управления захватом (завершён)" },
-            { stage: "Воздух1", description: "Сборка летающей платформы" },
+            { stage: "Воздух1", description: "Сборка летающей платформы (в процессе)" },
             { stage: "Воздух2", description: "Интеграция компонентов" },
-            { stage: "Воздух3", description: "Компьютерное зрение (перспектива)" }
+            { stage: "Воздух3", description: "Компьютерное зрение через Raspberry Pi (перспектива)" }
         ],
         technicalRequirements: ["Приём HTTP команд", "Автоматическое построение маршрута", "Аварийная логика", "Телеметрия", "Управление захватом"],
         risks: ["Точность аварийной посадки", "Надёжность радиосвязи", "Энергопотребление", "Вибрации"],
-        achievements: ["Прототип захвата", "Рама из PETG-CF", "Библиотека для TFT", "Наземная станция на Flask"],
+        achievements: ["Прототип захвата", "Рама из PETG-CF", "Библиотека TFTeSPI", "Наземная станция на Flask"],
         hasSourceCode: true,
         githubUrl: "https://github.com/nikizi1234-ship-it",
         developmentSteps: ["Проектирование клешни", "Система захвата на STM32", "Сборка платформы", "MAVLink связь", "Наземная станция", "Интеграция"],
-        outcome: "Создана система «дрон + наземная станция» с открытым API."
+        outcome: "Создана система «дрон + наземная станция» с внутренним API."
     },
     taskmanager: {
         title: "Task Manager",
