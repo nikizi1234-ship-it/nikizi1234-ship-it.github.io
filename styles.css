@@ -1026,6 +1026,23 @@ body {
     }
 }
 
+.service-status {
+    background: var(--warning);
+    color: var(--bg-darker);
+    -webkit-text-fill-color: var(--bg-darker); /* перекрывает наследование прозрачности */
+    background-clip: unset;                     /* отключает наследуемый background-clip: text */
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    vertical-align: middle;
+    margin-left: 0.3rem;
+    transition: all 0.3s ease;
+}
+
 @media (max-width: 768px) {
     .home h1 { font-size: 2.5rem; }
     .home p { font-size: 1.1rem; }
@@ -1090,3 +1107,5 @@ body {
     .modal-header h2 { font-size: 1.3rem; }
     .contact-link { min-width: 200px; padding: 0.8rem 1.2rem; }
 }
+
+
