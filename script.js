@@ -1,1 +1,315 @@
+/**
+ * Данные проектов — объект содержит описание, технологии, этапы и ссылки.
+ * Используется для динамического наполнения модальных окон.
+ */
+const projectData = {
+    roblox: {
+        title: "Demon Legacy - Roblox RPG",
+        subtitle: "Multiplayer игра с кастомной графикой и системой прокачки",
+        description: "Разработал полноценную multiplayer RPG...",
+        techStack: ["Lua", "Roblox Studio", "Blender", "Multiplayer", "Game Design", "UI/UX"],
+        features: [
+            { title: "Игровая механика", description: "Система квестов, боевка и интерактивное окружение" },
+            { title: "Экономика", description: "Торговая система и внутриигровая валюта" },
+            { title: "Multiplayer", description: "Синхронизация действий между игроками" },
+            { title: "Графика", description: "Кастомные 3D модели из Blender" }
+        ],
+        achievements: ["Более 1000 активных игроков", "Рейтинг 4.8/5", "Положительные отзывы", "Полностью играбельный MVP"],
+        hasSourceCode: true,
+        githubUrl: "https://github.com/nikizi1234-ship-it/roblox-game",
+        playUrl: "https://www.roblox.com/games/107962526921864/Demon-Legacy",
+        developmentSteps: ["Проектирование игровой механики", "Создание 3D моделей", "Разработка на Lua", "Создание multiplayer", "Тестирование", "Публикация"],
+        outcome: "Создал работающий MVP игры с полноценным геймплеем."
+    },
+    devnet: {
+        title: "DevNet Messenger",
+        subtitle: "Веб-мессенджер с реальным временем обмена сообщениями",
+        description: "Разработал полнофункциональный веб-мессенджер...",
+        techStack: ["Python", "FastAPI", "WebSocket", "SQLAlchemy", "JWT Auth", "SQLite", "Railway"],
+        features: [
+            { title: "Real-time сообщения", description: "Мгновенная доставка через WebSocket" },
+            { title: "Аутентификация", description: "JWT токены для безопасного доступа" },
+            { title: "Статусы пользователей", description: "Отображение онлайн/офлайн" },
+            { title: "История сообщений", description: "Полная история переписки" }
+        ],
+        achievements: ["Работающий мессенджер", "Деплой на Railway", "JWT аутентификация", "WebSocket интеграция"],
+        hasSourceCode: true,
+        githubUrl: "https://github.com/nikizi1234-ship-it/DevNetMessager/tree/main",
+        demoUrl: "https://devnetmessager-production.up.railway.app/",
+        developmentSteps: ["Проектирование архитектуры", "FastAPI + WebSocket", "JWT авторизация", "Статусы пользователей", "Интеграция SQLite", "Деплой"],
+        outcome: "Создал полнофункциональный мессенджер, демонстрирующий работу с real-time."
+    },
+    airflow: {
+        title: "AF (Air Flow)",
+        subtitle: "Автономный дрон-доставщик",
+        description: "Инженерный эксперимент по созданию дрона...",
+        techStack: ["C++ (STM32)", "Python (FastAPI)", "Raspberry Pi", "MAVLink", "nRF24L01+", "Kakute H7", "3D-печать", "Blender"],
+        developmentStages: [
+            { stage: "Земля1", description: "Стенд управления захватом (завершён)" },
+            { stage: "Воздух1", description: "Сборка летающей платформы" },
+            { stage: "Воздух2", description: "Интеграция компонентов" },
+            { stage: "Воздух3", description: "Компьютерное зрение (перспектива)" }
+        ],
+        technicalRequirements: ["Приём HTTP команд", "Автоматическое построение маршрута", "Аварийная логика", "Телеметрия", "Управление захватом"],
+        risks: ["Точность аварийной посадки", "Надёжность радиосвязи", "Энергопотребление", "Вибрации"],
+        achievements: ["Прототип захвата", "Рама из PETG-CF", "Библиотека для TFT", "Наземная станция на Flask"],
+        hasSourceCode: true,
+        githubUrl: "https://github.com/nikizi1234-ship-it",
+        developmentSteps: ["Проектирование клешни", "Система захвата на STM32", "Сборка платформы", "MAVLink связь", "Наземная станция", "Интеграция"],
+        outcome: "Создана система «дрон + наземная станция» с открытым API."
+    },
+    taskmanager: {
+        title: "Task Manager",
+        subtitle: "FullStack приложение",
+        description: "Веб-приложение для управления задачами...",
+        techStack: ["Python", "FastAPI", "React", "PostgreSQL", "Docker", "Railway"],
+        features: [
+            { title: "Управление задачами", description: "CRUD операции" },
+            { title: "Аутентификация", description: "JWT токены" },
+            { title: "Интерфейс", description: "Адаптивный React UI" },
+            { title: "API", description: "REST API" }
+        ],
+        achievements: ["FullStack приложение", "Деплой на Railway", "PostgreSQL интеграция", "JWT аутентификация"],
+        hasSourceCode: true,
+        githubUrl: "https://github.com/nikizi1234-ship-it/task-manager/tree/main",
+        demoUrl: "https://taskmanager0.up.railway.app/",
+        developmentSteps: ["Проектирование", "FastAPI бэкенд", "React фронтенд", "Настройка БД", "Docker", "CI/CD"],
+        outcome: "Создал полнофункциональное FullStack приложение."
+    },
+    telegram: {
+        title: "Telegram бот для задач",
+        subtitle: "Координация работы команды",
+        description: "Разработал Telegram бота для управления задачами...",
+        techStack: ["Python", "aiogram", "SQLite"],
+        features: [
+            { title: "Управление задачами", description: "Создание и назначение" },
+            { title: "Уведомления", description: "Автоматические оповещения" }
+        ],
+        hasSourceCode: true,
+        githubUrl: "https://github.com/nikizi1234-ship-it/task-manager-bot",
+        developmentSteps: ["Проектирование архитектуры", "Система команд", "База данных SQLite", "Уведомления", "Тестирование"],
+        outcome: "Бот используется для координации работы команды."
+    }
+};
 
+// Инициализация всех интерактивных элементов после загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    initializeServicesCarousel();
+    initializeScrollAnimations();
+    initializeMobileMenu();
+    initializeBackToTop();
+    initializeHeaderScroll();
+});
+
+/* ==================== КАРУСЕЛЬ УСЛУГ ==================== */
+let currentServiceIndex = 0;                // текущий слайд
+const servicesTrack = document.getElementById('servicesTrack');
+const serviceIndicators = document.getElementById('serviceIndicators');
+
+// Создание индикаторов и первичная настройка
+function initializeServicesCarousel() {
+    const items = servicesTrack.children;
+    for (let i = 0; i < items.length; i++) {
+        const indicator = document.createElement('button');
+        indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
+        indicator.onclick = () => moveToService(i);
+        serviceIndicators.appendChild(indicator);
+    }
+    updateServicesCarousel();
+}
+
+// Сдвиг на заданное число слайдов
+function moveServiceCarousel(direction) {
+    const items = servicesTrack.children;
+    currentServiceIndex = (currentServiceIndex + direction + items.length) % items.length;
+    updateServicesCarousel();
+}
+
+// Переход к конкретному слайду
+function moveToService(index) {
+    currentServiceIndex = index;
+    updateServicesCarousel();
+}
+
+// Обновление трансформации и активного индикатора
+function updateServicesCarousel() {
+    const translateX = -currentServiceIndex * 100;
+    servicesTrack.style.transform = `translateX(${translateX}%)`;
+
+    const indicators = serviceIndicators.children;
+    for (let i = 0; i < indicators.length; i++) {
+        indicators[i].className = `indicator ${i === currentServiceIndex ? 'active' : ''}`;
+    }
+}
+
+/* ==================== МОБИЛЬНОЕ МЕНЮ ==================== */
+function initializeMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ?
+            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // Закрытие меню при клике на любую ссылку
+    const navItems = navLinks.querySelectorAll('a');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+}
+
+/* ==================== АНИМАЦИИ ПРИ СКРОЛЛЕ ==================== */
+function initializeScrollAnimations() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    fadeElements.forEach(element => observer.observe(element));
+}
+
+/* ==================== КНОПКА "НАВЕРХ" ==================== */
+function initializeBackToTop() {
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+/* ==================== ХЕДЕР ПРИ СКРОЛЛЕ ==================== */
+function initializeHeaderScroll() {
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
+
+/* ==================== НАВИГАЦИЯ ПО СЕКЦИЯМ ==================== */
+function scrollToSection(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ==================== МОДАЛЬНЫЕ ОКНА ПРОЕКТОВ ==================== */
+const modalOverlay = document.getElementById('modalOverlay');
+const modalTitle = document.getElementById('modalTitle');
+const modalContent = document.getElementById('modalContent');
+
+// Открытие модального окна с деталями проекта
+function openModal(projectId) {
+    const project = projectData[projectId];
+    if (!project) return;
+
+    modalTitle.textContent = project.title;
+
+    let content = `
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">${project.subtitle}</p>
+        <p>${project.description}</p>
+        <div class="tech-stack">
+            ${project.techStack.map(tech => `<span class="tech-tag ${tech.includes('Инженерный') ? 'warning' : ''}">${tech}</span>`).join('')}
+        </div>
+        <div class="project-features">
+            ${project.features ? project.features.map(f => `
+                <div class="feature-card"><h3>${f.title}</h3><p>${f.description}</p></div>
+            `).join('') : ''}
+        </div>
+    `;
+
+    // Специфичные блоки для проекта AirFlow
+    if (projectId === 'airflow') {
+        content += `
+            <h3>Этапы разработки</h3>
+            <div class="development-steps">
+                ${project.developmentStages.map(stage => `
+                    <div class="step"><strong>${stage.stage}:</strong> ${stage.description}</div>
+                `).join('')}
+            </div>
+            <h3>Технические требования</h3>
+            <ul>${project.technicalRequirements.map(req => `<li>${req}</li>`).join('')}</ul>
+            <div class="risk-list">
+                <h3>Выявленные инженерные риски</h3>
+                <ul>${project.risks.map(risk => `<li>${risk}</li>`).join('')}</ul>
+            </div>
+        `;
+    }
+
+    if (project.achievements) {
+        content += `<h3>Достижения</h3><ul>${project.achievements.map(a => `<li>${a}</li>`).join('')}</ul>`;
+    }
+
+    content += `
+        <div class="project-buttons">
+            <button class="project-button" onclick="showProjectOutcome('${projectId}')">Итог проекта</button>
+            ${project.hasSourceCode ? `<a href="${project.githubUrl}" class="project-button github" target="_blank">Исходный код</a>` : ''}
+            ${project.demoUrl ? `<a href="${project.demoUrl}" class="project-button" target="_blank">Открыть приложение</a>` : ''}
+            ${project.playUrl ? `<a href="${project.playUrl}" class="project-button play" target="_blank">Играть онлайн</a>` : ''}
+        </div>
+    `;
+
+    modalContent.innerHTML = content;
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Показ итогов и этапов разработки проекта
+function showProjectOutcome(projectId) {
+    const project = projectData[projectId];
+    if (!project) return;
+
+    const outcomeHtml = `
+        <h3>Этапы разработки</h3>
+        <div class="development-steps">
+            ${project.developmentSteps.map((step, index) => `
+                <div class="step"><span class="step-number">${index + 1}.</span>${step}</div>
+            `).join('')}
+        </div>
+        <h3>Итоговый результат</h3>
+        <p>${project.outcome}</p>
+        <div style="margin-top: 2rem;">
+            <button class="project-button" onclick="openModal('${projectId}')">Назад к описанию</button>
+        </div>
+    `;
+    modalContent.innerHTML = outcomeHtml;
+}
+
+// Закрытие модального окна
+function closeModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Закрытие по клику на оверлей или клавише Escape
+modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+});
+
+/* ==================== АВТОПРОКРУТКА КАРУСЕЛИ ==================== */
+let serviceAutoScroll = setInterval(() => moveServiceCarousel(1), 5000);
+servicesTrack.addEventListener('mouseenter', () => clearInterval(serviceAutoScroll));
+servicesTrack.addEventListener('mouseleave', () => {
+    serviceAutoScroll = setInterval(() => moveServiceCarousel(1), 5000);
+});
