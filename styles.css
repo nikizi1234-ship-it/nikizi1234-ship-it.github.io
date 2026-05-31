@@ -510,3 +510,39 @@ html::after {
     .modal-header h2 { font-size: 1.3rem; }
     .contact-link { min-width: 200px; padding: 0.8rem 1.2rem; }
 }
+
+.project-link {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    background: rgba(16,163,127,0.1);
+    color: var(--primary) !important;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-weight: 500;
+    text-align: center;
+    display: inline-block;
+}
+.project-link:hover {
+    background: var(--primary);
+    color: #fff !important;
+    transform: translateY(-2px);
+}
+.project-link.github {
+    background: rgba(255,255,255,0.1) !important;
+    border-color: var(--text-secondary) !important;
+    color: var(--text-primary) !important;
+}
+.project-link.github:hover {
+    background: var(--text-primary) !important;
+    color: var(--bg-dark) !important;
+}
+.project-link.play {
+    background: rgba(255,82,82,0.1) !important;
+    border-color: #ff5252 !important;
+    color: #ff5252 !important;
+}
+.project-link.play:hover {
+    background: #ff5252 !important;
+    color: white !important;
+}
