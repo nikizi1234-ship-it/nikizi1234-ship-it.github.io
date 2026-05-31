@@ -332,3 +332,20 @@ function initMobileSkillsToggle() {
         card.classList.toggle('expanded');
     });
 }
+
+// --- Раскрытие полного текста на телефонах ---
+function initMobileSkillsToggle() {
+    const grid = document.querySelector('.skills-grid-mobile');
+    if (!grid) return;
+    grid.addEventListener('click', (e) => {
+        const card = e.target.closest('.skill-card');
+        if (!card) return;
+        card.classList.toggle('expanded');
+    });
+}
+// Вызвать при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    // ... существующие инициализации
+    initMobileSkillsToggle();
+    // запуск ротации уже есть выше
+});
