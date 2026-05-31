@@ -279,3 +279,37 @@ servicesTrack.addEventListener('mouseenter', () => clearInterval(serviceAutoScro
 servicesTrack.addEventListener('mouseleave', () => {
     serviceAutoScroll = setInterval(() => moveServiceCarousel(1), 5000);
 });
+
+// --- Ротация веера навыков ---
+function rotateSkillsFan() {
+    const fan = document.querySelector('.skills-fan');
+    if (!fan) return;
+    const cards = Array.from(fan.querySelectorAll('.skill-card-fan'));
+    // Сдвигаем массив: последний элемент становится первым
+    const last = cards.pop();
+    cards.unshift(last);
+    // Переназначаем CSS-переменные --i
+    cards.forEach((card, index) => {
+        card.style.setProperty('--i', index);
+    });
+    // Перемещаем элементы в DOM в новом порядке (для z-index и иерархии)
+    cards.forEach(card => fan.appendChild(card));
+}
+setInterval(rotateSkillsFan, 10000);
+
+// --- Раскрытие полного текста на телефонах ---
+function initMobileSkillsToggle() {
+    const grid = document.querySelector('.skills-grid-mobile');
+    if (!grid) return;
+    grid.addEventListener('click', (e) => {
+        const card = e.target.closest('.skill-card');
+        if (!card) return;
+        card.classList.toggle('expanded');
+    });
+}
+// Вызвать при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    // ... существующие инициализации
+    initMobileSkillsToggle();
+    // запуск ротации уже есть выше
+});
