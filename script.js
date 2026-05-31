@@ -92,7 +92,8 @@ const projectData = {
     }
 };
 
-// Инициализация всех интерактивных элементов после загрузки DOM
+// ... (projectData без изменений)
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeServicesCarousel();
     initializeScrollAnimations();
@@ -101,12 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeHeaderScroll();
 });
 
-/* ==================== КАРУСЕЛЬ УСЛУГ ==================== */
-let currentServiceIndex = 0;                // текущий слайд
+// === КАРУСЕЛЬ УСЛУГ ===
+let currentServiceIndex = 0;
 const servicesTrack = document.getElementById('servicesTrack');
 const serviceIndicators = document.getElementById('serviceIndicators');
 
-// Создание индикаторов и первичная настройка
 function initializeServicesCarousel() {
     const items = servicesTrack.children;
     for (let i = 0; i < items.length; i++) {
@@ -118,146 +118,121 @@ function initializeServicesCarousel() {
     updateServicesCarousel();
 }
 
-// Сдвиг на заданное число слайдов
 function moveServiceCarousel(direction) {
     const items = servicesTrack.children;
     currentServiceIndex = (currentServiceIndex + direction + items.length) % items.length;
     updateServicesCarousel();
 }
 
-// Переход к конкретному слайду
 function moveToService(index) {
     currentServiceIndex = index;
     updateServicesCarousel();
 }
 
-// Обновление трансформации и активного индикатора
 function updateServicesCarousel() {
     const translateX = -currentServiceIndex * 100;
     servicesTrack.style.transform = `translateX(${translateX}%)`;
-
     const indicators = serviceIndicators.children;
     for (let i = 0; i < indicators.length; i++) {
         indicators[i].className = `indicator ${i === currentServiceIndex ? 'active' : ''}`;
     }
 }
 
-/* ==================== МОБИЛЬНОЕ МЕНЮ ==================== */
+// === МОБИЛЬНОЕ МЕНЮ (с блокировкой скролла) ===
 function initializeMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
+    const body = document.body;
 
     mobileMenuBtn.addEventListener('click', function() {
         navLinks.classList.toggle('active');
-        mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ?
-            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        const isOpen = navLinks.classList.contains('active');
+        mobileMenuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        if (isOpen) {
+            body.classList.add('menu-open');
+        } else {
+            body.classList.remove('menu-open');
+        }
     });
 
-    // Закрытие меню при клике на любую ссылку
     const navItems = navLinks.querySelectorAll('a');
     navItems.forEach(item => {
         item.addEventListener('click', function() {
             navLinks.classList.remove('active');
             mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            body.classList.remove('menu-open');
         });
     });
 }
 
-/* ==================== АНИМАЦИИ ПРИ СКРОЛЛЕ ==================== */
+// === АНИМАЦИИ ПРИ СКРОЛЛЕ ===
 function initializeScrollAnimations() {
     const fadeElements = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
     }, { threshold: 0.1 });
-
-    fadeElements.forEach(element => observer.observe(element));
+    fadeElements.forEach(el => observer.observe(el));
 }
 
-/* ==================== КНОПКА "НАВЕРХ" ==================== */
+// === КНОПКА НАВЕРХ ===
 function initializeBackToTop() {
-    const backToTopBtn = document.getElementById('backToTop');
-
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.pageYOffset > 300);
     });
-
-    backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-/* ==================== ХЕДЕР ПРИ СКРОЛЛЕ ==================== */
+// === ХЕДЕР ===
 function initializeHeaderScroll() {
     const header = document.getElementById('header');
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.pageYOffset > 50);
     });
 }
 
-/* ==================== НАВИГАЦИЯ ПО СЕКЦИЯМ ==================== */
+// === НАВИГАЦИЯ ===
 function scrollToSection(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
 }
 
-/* ==================== МОДАЛЬНЫЕ ОКНА ПРОЕКТОВ ==================== */
+// === МОДАЛЬНОЕ ОКНО (с сохранением позиции скролла) ===
 const modalOverlay = document.getElementById('modalOverlay');
 const modalTitle = document.getElementById('modalTitle');
 const modalContent = document.getElementById('modalContent');
+let lastScrollPosition = 0;
 
-// Открытие модального окна с деталями проекта
 function openModal(projectId) {
     const project = projectData[projectId];
     if (!project) return;
 
-    modalTitle.textContent = project.title;
+    // Сохраняем текущую позицию скролла
+    lastScrollPosition = window.scrollY;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${lastScrollPosition}px`;
+    document.body.style.width = '100%';
 
+    modalTitle.textContent = project.title;
     let content = `
         <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">${project.subtitle}</p>
         <p>${project.description}</p>
-        <div class="tech-stack">
-            ${project.techStack.map(tech => `<span class="tech-tag ${tech.includes('Инженерный') ? 'warning' : ''}">${tech}</span>`).join('')}
-        </div>
-        <div class="project-features">
-            ${project.features ? project.features.map(f => `
-                <div class="feature-card"><h3>${f.title}</h3><p>${f.description}</p></div>
-            `).join('') : ''}
-        </div>
+        <div class="tech-stack">${project.techStack.map(tech => `<span class="tech-tag ${tech.includes('Инженерный')?'warning':''}">${tech}</span>`).join('')}</div>
+        <div class="project-features">${(project.features||[]).map(f => `<div class="feature-card"><h3>${f.title}</h3><p>${f.description}</p></div>`).join('')}</div>
     `;
-
-    // Специфичные блоки для проекта AirFlow
     if (projectId === 'airflow') {
         content += `
             <h3>Этапы разработки</h3>
-            <div class="development-steps">
-                ${project.developmentStages.map(stage => `
-                    <div class="step"><strong>${stage.stage}:</strong> ${stage.description}</div>
-                `).join('')}
-            </div>
-            <h3>Технические требования</h3>
-            <ul>${project.technicalRequirements.map(req => `<li>${req}</li>`).join('')}</ul>
-            <div class="risk-list">
-                <h3>Выявленные инженерные риски</h3>
-                <ul>${project.risks.map(risk => `<li>${risk}</li>`).join('')}</ul>
-            </div>
+            <div class="development-steps">${project.developmentStages.map(s => `<div class="step"><strong>${s.stage}:</strong> ${s.description}</div>`).join('')}</div>
+            <h3>Технические требования</h3><ul>${project.technicalRequirements.map(r => `<li>${r}</li>`).join('')}</ul>
+            <div class="risk-list"><h3>Инженерные риски</h3><ul>${project.risks.map(r => `<li>${r}</li>`).join('')}</ul></div>
         `;
     }
-
     if (project.achievements) {
         content += `<h3>Достижения</h3><ul>${project.achievements.map(a => `<li>${a}</li>`).join('')}</ul>`;
     }
-
     content += `
         <div class="project-buttons">
             <button class="project-button" onclick="showProjectOutcome('${projectId}')">Итог проекта</button>
@@ -266,48 +241,39 @@ function openModal(projectId) {
             ${project.playUrl ? `<a href="${project.playUrl}" class="project-button play" target="_blank">Играть онлайн</a>` : ''}
         </div>
     `;
-
     modalContent.innerHTML = content;
     modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
 }
 
-// Показ итогов и этапов разработки проекта
 function showProjectOutcome(projectId) {
     const project = projectData[projectId];
     if (!project) return;
-
-    const outcomeHtml = `
+    modalContent.innerHTML = `
         <h3>Этапы разработки</h3>
-        <div class="development-steps">
-            ${project.developmentSteps.map((step, index) => `
-                <div class="step"><span class="step-number">${index + 1}.</span>${step}</div>
-            `).join('')}
-        </div>
-        <h3>Итоговый результат</h3>
-        <p>${project.outcome}</p>
-        <div style="margin-top: 2rem;">
-            <button class="project-button" onclick="openModal('${projectId}')">Назад к описанию</button>
-        </div>
+        <div class="development-steps">${project.developmentSteps.map((s,i) => `<div class="step"><span class="step-number">${i+1}.</span>${s}</div>`).join('')}</div>
+        <h3>Итог</h3><p>${project.outcome}</p>
+        <div style="margin-top:2rem"><button class="project-button" onclick="openModal('${projectId}')">Назад к описанию</button></div>
     `;
-    modalContent.innerHTML = outcomeHtml;
 }
 
-// Закрытие модального окна
 function closeModal() {
     modalOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    // Восстанавливаем скролл
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, lastScrollPosition);
 }
 
-// Закрытие по клику на оверлей или клавише Escape
 modalOverlay.addEventListener('click', (e) => {
     if (e.target === modalOverlay) closeModal();
 });
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
 });
 
-/* ==================== АВТОПРОКРУТКА КАРУСЕЛИ ==================== */
+// === АВТОПРОКРУТКА КАРУСЕЛИ ===
 let serviceAutoScroll = setInterval(() => moveServiceCarousel(1), 5000);
 servicesTrack.addEventListener('mouseenter', () => clearInterval(serviceAutoScroll));
 servicesTrack.addEventListener('mouseleave', () => {
