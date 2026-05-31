@@ -527,6 +527,51 @@ html::after {
     background: var(--primary);
     color: #fff !important;
     transform: translateY(-2px);
+
+.crate-card {
+    width: 220px;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.2rem;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.4s;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+}
+
+/* Базовые повороты и смещения для каждой карточки */
+.crate-top .crate-card:nth-child(1) {
+    transform: rotate(-6deg) translateX(-10px) scale(0.85);
+}
+.crate-top .crate-card:nth-child(2) {
+    transform: rotate(4deg) translateX(10px) scale(0.85);
+}
+.crate-bottom .crate-card:nth-child(1) {
+    transform: rotate(5deg) translateX(-8px) scale(0.85);
+}
+.crate-bottom .crate-card:nth-child(2) {
+    transform: rotate(-7deg) translateX(8px) scale(0.85);
+}
+
+/* При наведении на ящик карточки выравниваются и появляются */
+.projects-crate:hover .crate-top {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-140px);
+}
+.projects-crate:hover .crate-bottom {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(140px);
+}
+.projects-crate:hover .crate-card {
+    opacity: 1;
+    transform: scale(1) rotate(0deg) translateX(0) !important;
+}
 }
 .project-link.github {
     background: rgba(255,255,255,0.1) !important;
@@ -546,3 +591,5 @@ html::after {
     background: #ff5252 !important;
     color: white !important;
 }
+
+
