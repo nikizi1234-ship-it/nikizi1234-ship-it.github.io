@@ -7,14 +7,14 @@ const projectData = {
         title: "Demon Legacy - Roblox RPG",
         subtitle: "Multiplayer игра с кастомной графикой и системой прокачки",
         description: "Разработал полноценную multiplayer RPG на платформе Roblox. Игра включает сложную экономическую систему, инвентарь, прокачку персонажа, 3-5 уникальных способностей и взаимодействие между игроками. Создал кастомную графику в Blender и реализовал продвинутую систему камер.",
-        techStack: ["Lua ", "Roblox Studio ", "Blender ", "Multiplayer ", "Game Design ", "UI/UX "],
+        techStack: ["Lua, ", "Roblox Studio, ", "Blender, ", "Multiplayer, ", "Game Design, ", "UI/UX, "],
         features: [
             { title: "Игровая механика", description: "Система квестов, боевка и интерактивное окружение" },
             { title: "Экономика", description: "Торговая система и внутриигровая валюта" },
             { title: "Multiplayer", description: "Синхронизация действий между игроками" },
             { title: "Графика", description: "Кастомные 3D модели из Blender" }
         ],
-        achievements: ["Более 1000 активных игроков", "Рейтинг 4.8/5", "Положительные отзывы", "Полностью играбельный MVP"],
+        achievements: ["Более 100 активных игроков", "Рейтинг 4.8/5", "Положительные отзывы", "Играбельный MVP"],
         hasSourceCode: true,
         githubUrl: "https://github.com/nikizi1234-ship-it/roblox-game",
         playUrl: "https://www.roblox.com/games/107962526921864/Demon-Legacy",
@@ -25,7 +25,7 @@ const projectData = {
         title: "DevNet Messenger",
         subtitle: "Веб-мессенджер с реальным временем обмена сообщениями",
         description: "Разработал полнофункциональный веб-мессенджер с использованием FastAPI и WebSocket для мгновенной доставки сообщений. Система включает регистрацию пользователей, JWT аутентификацию, управление статусами онлайн/офлайн, историю сообщений и возможность удаления чатов. Проект временно приостановлен для работы над другими инициативами.",
-        techStack: ["Python ", "FastAPI ", "WebSocket ", "SQLAlchemy ", "JWT Auth ", "SQLite ", "Railway "],
+        techStack: ["Python, ", "FastAPI, ", "WebSocket, ", "SQLAlchemy, ", "JWT Auth, ", "SQLite, ", "Railway, "],
         features: [
             { title: "Real-time сообщения", description: "Мгновенная доставка через WebSocket" },
             { title: "Аутентификация", description: "JWT токены для безопасного доступа" },
@@ -43,7 +43,7 @@ const projectData = {
         title: "AF (Air Flow)",
         subtitle: "Автономный дрон-доставщик",
         description: "Инженерный эксперимент по созданию дрона...",
-        techStack: ["C++ (STM32) ", "Python (FastAPI и Flask) ", "Raspberry Pi 5 ", "MAVLink ", "nRF24L01+ ", "Kakute H7 ", "3D-печать ", "Blender ","FreeCAD","Rust (cxx связь с C++)"],
+        techStack: ["C++ (STM32), ", "Python (FastAPI и Flask), ", "Raspberry Pi 5, ", "MAVLink, ", "nRF24L01+, ", "Kakute H7, ", "3D-печать, ", "Blender, ","FreeCAD, ","Rust (cxx связь с C++), "],
         developmentStages: [
             { stage: "Земля1", description: "Стенд управления захватом (завершён)" },
             { stage: "Воздух1", description: "Сборка летающей платформы (в процессе)" },
@@ -56,13 +56,13 @@ const projectData = {
         hasSourceCode: false,
         githubUrl: "https://github.com/nikizi1234-ship-it",
         developmentSteps: ["Проектирование клешни", "Система захвата на STM32", "Сборка платформы", "MAVLink связь", "Наземная станция", "Интеграция"],
-        outcome: "Создана система «дрон + наземная станция» с открытым API."
+        outcome: "Создана система «дрон + наземная станция» с частным API."
     },
     taskmanager: {
         title: "Task Manager",
         subtitle: "FullStack приложение",
         description: "Веб-приложение для управления задачами...",
-        techStack: ["Python ", "FastAPI ", "SQLite", "Docker", "Railway"],
+        techStack: ["Python, ", "FastAPI, ", "SQLite, ", "Docker, ", "Railway, "],
         features: [
             { title: "Управление задачами", description: "CRUD операции" },
             { title: "Аутентификация", description: "JWT токены" },
@@ -80,7 +80,7 @@ const projectData = {
         title: "Telegram бот для задач",
         subtitle: "Координация работы команды",
         description: "Разработал Telegram бота для управления задачами...",
-        techStack: ["Python", "aiogram", "SQLite"],
+        techStack: ["Python, ", "aiogram, ", "SQLite, "],
         features: [
             { title: "Управление задачами", description: "Создание и назначение" },
             { title: "Уведомления", description: "Автоматические оповещения" }
@@ -308,19 +308,7 @@ servicesTrack.addEventListener('mouseleave', () => {
 });
 
 /* ==================== РОТАЦИЯ ВЕЕРА НАВЫКОВ ==================== */
-function rotateSkillsFan() {
-    const fan = document.querySelector('.skills-fan');
-    if (!fan) return;
-    const cards = Array.from(fan.querySelectorAll('.skill-card-fan'));
-    if (cards.length === 0) return;
-    const last = cards.pop();
-    cards.unshift(last);
-    cards.forEach((card, index) => {
-        card.style.setProperty('--i', index);
-    });
-    // Перестраиваем DOM для корректного z-index
-    cards.forEach(card => fan.appendChild(card));
-}
+/* отключено */
 
 /* ==================== РАСКРЫТИЕ ТЕКСТА НА МОБИЛЬНЫХ НАВЫКАХ ==================== */
 function initMobileSkillsToggle() {
