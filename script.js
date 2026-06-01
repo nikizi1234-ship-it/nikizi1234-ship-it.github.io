@@ -7,7 +7,7 @@ const projectData = {
         title: "Demon Legacy - Roblox RPG",
         subtitle: "Multiplayer игра с кастомной графикой и системой прокачки",
         description: "Разработал полноценную multiplayer RPG на платформе Roblox. Игра включает сложную экономическую систему, инвентарь, прокачку персонажа, 3-5 уникальных способностей и взаимодействие между игроками. Создал кастомную графику в Blender и реализовал продвинутую систему камер.",
-        techStack: ["Lua", "Roblox Studio", "Blender", "Multiplayer", "Game Design", "UI/UX"],
+        techStack: ["Lua ", "Roblox Studio ", "Blender ", "Multiplayer ", "Game Design ", "UI/UX "],
         features: [
             { title: "Игровая механика", description: "Система квестов, боевка и интерактивное окружение" },
             { title: "Экономика", description: "Торговая система и внутриигровая валюта" },
@@ -25,7 +25,7 @@ const projectData = {
         title: "DevNet Messenger",
         subtitle: "Веб-мессенджер с реальным временем обмена сообщениями",
         description: "Разработал полнофункциональный веб-мессенджер с использованием FastAPI и WebSocket для мгновенной доставки сообщений. Система включает регистрацию пользователей, JWT аутентификацию, управление статусами онлайн/офлайн, историю сообщений и возможность удаления чатов. Проект временно приостановлен для работы над другими инициативами.",
-        techStack: ["Python", "FastAPI", "WebSocket", "SQLAlchemy", "JWT Auth", "SQLite", "Railway"],
+        techStack: ["Python ", "FastAPI ", "WebSocket ", "SQLAlchemy ", "JWT Auth ", "SQLite ", "Railway "],
         features: [
             { title: "Real-time сообщения", description: "Мгновенная доставка через WebSocket" },
             { title: "Аутентификация", description: "JWT токены для безопасного доступа" },
@@ -43,17 +43,17 @@ const projectData = {
         title: "AF (Air Flow)",
         subtitle: "Автономный дрон-доставщик",
         description: "Инженерный эксперимент по созданию дрона...",
-        techStack: ["C++ (STM32)", "Python (FastAPI)", "Raspberry Pi", "MAVLink", "nRF24L01+", "Kakute H7", "3D-печать", "Blender"],
+        techStack: ["C++ (STM32) ", "Python (FastAPI и Flask) ", "Raspberry Pi 5 ", "MAVLink ", "nRF24L01+ ", "Kakute H7 ", "3D-печать ", "Blender ","FreeCAD","Rust (cxx связь с C++)"],
         developmentStages: [
             { stage: "Земля1", description: "Стенд управления захватом (завершён)" },
-            { stage: "Воздух1", description: "Сборка летающей платформы" },
+            { stage: "Воздух1", description: "Сборка летающей платформы (в процессе)" },
             { stage: "Воздух2", description: "Интеграция компонентов" },
             { stage: "Воздух3", description: "Компьютерное зрение (перспектива)" }
         ],
         technicalRequirements: ["Приём HTTP команд", "Автоматическое построение маршрута", "Аварийная логика", "Телеметрия", "Управление захватом"],
         risks: ["Точность аварийной посадки", "Надёжность радиосвязи", "Энергопотребление", "Вибрации"],
         achievements: ["Прототип захвата", "Рама из PETG-CF", "Библиотека для TFT", "Наземная станция на Flask"],
-        hasSourceCode: true,
+        hasSourceCode: false,
         githubUrl: "https://github.com/nikizi1234-ship-it",
         developmentSteps: ["Проектирование клешни", "Система захвата на STM32", "Сборка платформы", "MAVLink связь", "Наземная станция", "Интеграция"],
         outcome: "Создана система «дрон + наземная станция» с открытым API."
@@ -62,14 +62,14 @@ const projectData = {
         title: "Task Manager",
         subtitle: "FullStack приложение",
         description: "Веб-приложение для управления задачами...",
-        techStack: ["Python", "FastAPI", "React", "PostgreSQL", "Docker", "Railway"],
+        techStack: ["Python ", "FastAPI ", "SQLite", "Docker", "Railway"],
         features: [
             { title: "Управление задачами", description: "CRUD операции" },
             { title: "Аутентификация", description: "JWT токены" },
             { title: "Интерфейс", description: "Адаптивный React UI" },
             { title: "API", description: "REST API" }
         ],
-        achievements: ["FullStack приложение", "Деплой на Railway", "PostgreSQL интеграция", "JWT аутентификация"],
+        achievements: ["FullStack приложение", "Деплой на Railway", "SQLite интеграция", "JWT аутентификация"],
         hasSourceCode: true,
         githubUrl: "https://github.com/nikizi1234-ship-it/task-manager/tree/main",
         demoUrl: "https://taskmanager0.up.railway.app/",
