@@ -100,8 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeBackToTop();
     initializeHeaderScroll();
     initMobileSkillsToggle();   // раскрытие текста на мобильных
-    // Запуск ротации веера навыков
-    setInterval(rotateSkillsFan, 10000);
+    // Запуск ротации веера навыков (отключено)
+    // setInterval(rotateSkillsFan, 10000);
 });
 
 /* ==================== КАРУСЕЛЬ УСЛУГ ==================== */
