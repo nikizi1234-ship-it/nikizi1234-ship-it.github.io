@@ -14,16 +14,16 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5   # обновлено до v5
 
-      # Копируем все файлы в папку dist (можно и без этого, но для единообразия)
+      # Копируем все файлы из репозитория в папку dist
       - name: Prepare artifact
         run: |
           mkdir -p dist
           cp -r ./* dist/
 
       - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4   # обновлено до v4
         with:
           path: ./dist
 
@@ -39,4 +39,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4   # обновлено до v4
