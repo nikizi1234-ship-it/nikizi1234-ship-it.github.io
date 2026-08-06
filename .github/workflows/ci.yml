@@ -10,33 +10,23 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Сборка на твоём Raspberry Pi (self-hosted)
   build:
     runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Если у тебя проект на Node.js (React, Vue, Angular и т.п.)
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
+      # Копируем все файлы в папку dist (можно и без этого, но для единообразия)
+      - name: Prepare artifact
+        run: |
+          mkdir -p dist
+          cp -r ./* dist/
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build site
-        run: npm run build
-
-      # Загружаем собранные файлы как артефакт
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist   # <--- Укажи свою папку сборки (если не dist, замени)
+          path: ./dist
 
-  # Деплой на GitHub Pages (выполняется на стандартном раннере GitHub)
   deploy:
     needs: build
     runs-on: ubuntu-latest
