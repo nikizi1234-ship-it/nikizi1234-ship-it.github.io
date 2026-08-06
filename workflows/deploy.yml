@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+# Запуск при пуше в ветку main (или вашу основную ветку)
+on:
+  push:
+    branches: [ "main" ]
+  # Также можно запускать вручную
+  workflow_dispatch:
+
+# Разрешаем деплою только одну задачу одновременно
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # JOB для сборки на self-hosted раннере
+  build:
+    runs-on: self-hosted  # <-- Ваш Raspberry Pi
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (если нужен)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+        # Предполагается, что сборка создаёт папку `dist` или `build`
+        # Укажите реальную папку вывода
+
+      - name: Upload artifact for Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist  # <-- Укажите путь к папке со собранными файлами
+
+  # JOB для деплоя (выполняется на GitHub-раннере, безопасно и бесплатно)
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest   # Используется стандартный раннер GitHub
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
