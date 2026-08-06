@@ -14,18 +14,18 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5   # обновлено до v5
+        uses: actions/checkout@v5
 
-      # Копируем все файлы из репозитория в папку dist
+      # Создаём папку для артефакта вне репозитория и копируем всё, кроме dist
       - name: Prepare artifact
         run: |
-          mkdir -p dist
-          cp -r ./* dist/
+          mkdir -p ../artifact
+          rsync -av --exclude='dist' ./ ../artifact/
 
       - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v4   # обновлено до v4
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: ./dist
+          path: ../artifact   # указываем путь к папке с артефактом
 
   deploy:
     needs: build
@@ -39,4 +39,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4   # обновлено до v4
+        uses: actions/deploy-pages@v4
