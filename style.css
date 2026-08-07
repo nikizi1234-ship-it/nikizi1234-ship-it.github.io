@@ -795,10 +795,11 @@ html::after {
 
 .project-links {
     margin-top: 1rem;
+    text-align: center;  /* центрируем содержимое */
 }
 
 .project-link {
-    display: inline-block;
+    display: inline-block;  /* позволяет применять padding/margin, но остаётся в потоке текста */
     padding: 0.6rem 1.2rem;
     border: 1px solid var(--clr-primary);
     border-radius: var(--radius-sm);
