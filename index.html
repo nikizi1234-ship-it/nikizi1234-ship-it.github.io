@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Никита Молодцов — Data Science & Hardware Engineer. Аппаратно-программные комплексы, модели машинного обучения и встраиваемая электроника.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Никита Молодцов — Data Science & Hardware Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="gradient-bg" aria-hidden="true"></div>
+
+    <!-- Навигация -->
+    <header class="header" id="header">
+        <nav class="nav" aria-label="Основное меню">
+            <div class="logo">Никита Молодцов</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-section="home" onclick="scrollToSection('home'); return false;" class="active">Главная</a></li>
+                <li><a href="#skills" data-section="skills" onclick="scrollToSection('skills'); return false;">Навыки</a></li>
+                <li><a href="#services" data-section="services" onclick="scrollToSection('services'); return false;">Услуги</a></li>
+                <li><a href="#projects" data-section="projects" onclick="scrollToSection('projects'); return false;">Проекты</a></li>
+                <li><a href="#diplomas" data-section="diplomas" onclick="scrollToSection('diplomas'); return false;">Достижения</a></li>
+                <li><a href="#contacts" data-section="contacts" onclick="scrollToSection('contacts'); return false;">Контакты</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Главная секция -->
+        <section class="section home" id="home">
+            <div class="container">
+                <div class="home-content fade-in">
+                    <h1>Никита Молодцов</h1>
+                    <p style="font-size: 1.5rem; color: var(--clr-primary); font-weight: 500; margin-bottom: 1rem;">Data Science &amp; Hardware Engineer</p>
+                    <p>Создаю аппаратно-программные комплексы, модели машинного обучения и встраиваемую электронику</p>
+                    <a href="#projects" onclick="scrollToSection('projects'); return false;" class="cta-button">
+                        Смотреть проекты
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Навыки (веер карт) -->
+        <section class="section" id="skills">
+            <div class="container">
+                <h2 class="fade-in">Мои Навыки</h2>
+                <div class="skills-fan" aria-hidden="true">
+
+                    <div class="skill-card-fan premium-hover-effect" style="--i: 4;">
+                        <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Data Science &amp; ML</h3>
+                        <p>Обучение CNN/YOLO, сбор датасетов. Развертывание моделей на облачных GPU (Tesla T4, Vast.ai).</p>
+                        <div class="skill-level">
+                            <div class="level-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div>
+                            <span class="level-text">Экспертный</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card-fan premium-hover-effect" style="--i: 3;">
+                        <div class="skill-icon"><i class="fas fa-microchip"></i></div>
+                        <h3>Hardware &amp; ПЛИС</h3>
+                        <p>Гетерогенные архитектуры, FPGA (Verilog). C++ (STM32), работа с MAVLink, интеграция I2C/SPI сенсоров.</p>
+                        <div class="skill-level">
+                            <div class="level-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div>
+                            <span class="level-text">Продвинутый</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card-fan premium-hover-effect" style="--i: 2;">
+                        <div class="skill-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h3>Инженерия &amp; САПР</h3>
+                        <p>КОМПАС-3D (проектирование сложных многокомпонентных сборок). Расчет термодинамики и PBR-рендеринг.</p>
+                        <div class="skill-level">
+                            <div class="level-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div>
+                            <span class="level-text">Продвинутый</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card-fan premium-hover-effect" style="--i: 1;">
+                        <div class="skill-icon"><i class="fas fa-cube"></i></div>
+                        <h3>3D‑печать (FDM)</h3>
+                        <p>Сложные инженерные пластики (PETG-CF, ABS). Оптимизация профилей под Bambu Lab, многоцветная печать AMS.</p>
+                        <div class="skill-level">
+                            <div class="level-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div>
+                            <span class="level-text">Наивысший</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card-fan premium-hover-effect" style="--i: 0;">
+                        <div class="skill-icon"><i class="fab fa-python"></i></div>
+                        <h3>Backend &amp; Scripting</h3>
+                        <p>Python, FastAPI, SQL. Написание Оркестраторов для Raspberry Pi, обработка телеметрии и GBNF-грамматики.</p>
+                        <div class="skill-level">
+                            <div class="level-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></div>
+                            <span class="level-text">Средний</span>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Мобильная сетка -->
+                <div class="skills-grid-mobile">
+                    <div class="skill-card premium-hover-effect"><div class="skill-icon"><i class="fas fa-brain"></i></div><h3>Data Science</h3><p>Обучение YOLO/CNN, деплой моделей.</p></div>
+                    <div class="skill-card premium-hover-effect"><div class="skill-icon"><i class="fas fa-microchip"></i></div><h3>Hardware &amp; FPGA</h3><p>Встраиваемые системы, ПЛИС, STM32.</p></div>
+                    <div class="skill-card premium-hover-effect"><div class="skill-icon"><i class="fas fa-drafting-compass"></i></div><h3>САПР Инженерия</h3><p>КОМПАС-3D, интеграция электроники.</p></div>
+                    <div class="skill-card premium-hover-effect"><div class="skill-icon"><i class="fas fa-cube"></i></div><h3>3D-печать</h3><p>Bambu Lab A1 mini. Инженерные пластики.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Услуги -->
+        <section class="section services-section" id="services">
+            <div class="container">
+                <h2 class="fade-in">Услуги</h2>
+                <div class="services-carousel">
+                    <button class="carousel-nav prev" aria-label="Предыдущая услуга" onclick="moveServiceCarousel(-1)">‹</button>
+                    <div class="services-track" id="servicesTrack">
+
+                        <div class="service-item" onclick="openServiceModal('ml')">
+                            <div class="service-content premium-hover-effect">
+                                <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                                <h3>Data Science Модели</h3>
+                                <p>Сборка датасетов, обучение нейросетей (CNN, YOLO) и развертывание тяжелых визуально-языковых моделей на облачных GPU (Vast.ai, Tesla T4).</p>
+                                <div class="service-features">
+                                    <span class="service-feature">YOLO</span>
+                                    <span class="service-feature">CNN</span>
+                                    <span class="service-feature">Vast.ai</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-item" onclick="openServiceModal('hardware')">
+                            <div class="service-content premium-hover-effect">
+                                <div class="service-icon"><i class="fas fa-microchip"></i></div>
+                                <h3>Hardware &amp; Прошивки</h3>
+                                <p>Интеграция электроники, написание прошивок для микроконтроллеров и скриптов для одноплатных компьютеров (Raspberry Pi).</p>
+                                <div class="service-features">
+                                    <span class="service-feature">С++ / Python</span>
+                                    <span class="service-feature">STM32 / RPi</span>
+                                    <span class="service-feature">MAVLink</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-item" onclick="openServiceModal('3d-models')">
+                            <div class="service-content premium-hover-effect">
+                                <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                                <h3>САПР Инженерия</h3>
+                                <p>Разработка корпусов и механизмов в КОМПАС-3D. Полный цикл оптимизации прочности деталей под FDM-печать.</p>
+                                <div class="service-features">
+                                    <span class="service-feature">КОМПАС-3D</span>
+                                    <span class="service-feature">PETG-CF</span>
+                                    <span class="service-feature">Blender</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="carousel-nav next" aria-label="Следующая услуга" onclick="moveServiceCarousel(1)">›</button>
+                    <div class="carousel-indicators" id="serviceIndicators"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Проекты -->
+        <section class="section projects" id="projects">
+            <div class="container">
+                <h2 class="fade-in">Мои Проекты</h2>
+                <div class="projects-stack">
+                    <!-- Проект 1: AegisEmber -->
+                    <div class="project-card premium-hover-effect" onclick="openModal('nda-project')">
+                        <div class="project-card-content">
+                            <div class="project-icon"><i class="fas fa-fire"></i></div>
+                            <h3>AegisEmber Core <span class="project-status"><i class="fas fa-lock"></i> NDA</span></h3>
+                            <p class="project-description">Edge-вычислительный модуль для автономных БПЛА. Data Science алгоритмы и машинное зрение в защищенном корпусе.</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag warning">Hardware R&amp;D</span>
+                                <span class="tech-tag">Computer Vision</span>
+                                <span class="tech-tag">FPGA</span>
+                            </div>
+                            <div class="project-links"><span class="project-link">Техническое описание</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Проект 2: Demon Legacy -->
+                    <div class="project-card premium-hover-effect" onclick="openModal('demon-legacy')">
+                        <div class="project-card-content">
+                            <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+                            <h3>Demon Legacy RPG</h3>
+                            <p class="project-description">Multiplayer RPG со сложной экономикой и серверной синхронизацией. Кастомная PBR-графика.</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Lua</span>
+                                <span class="tech-tag">Roblox Studio</span>
+                                <span class="tech-tag">Blender 3D</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://www.roblox.com/games/107962526921864/Demon-Legacy" class="project-link play" target="_blank" rel="noopener" onclick="event.stopPropagation();">Играть онлайн</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Проект 3: Dev Net -->
+                    <div class="project-card premium-hover-effect" onclick="openModal('dev-net')">
+                        <div class="project-card-content">
+                            <div class="project-icon"><i class="fas fa-comments"></i></div>
+                            <h3>Dev Net <span class="project-status" style="background: rgba(160,160,160,0.2); color: #aaa;"><i class="fas fa-pause"></i> Архив</span></h3>
+                            <p class="project-description">Высоконагруженный веб‑мессенджер с real‑time доставкой сообщений через WebSocket.</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">WebSocket</span>
+                                <span class="tech-tag">SQL</span>
+                            </div>
+                            <div class="project-links"><span class="project-link unavailable">Хостинг недоступен</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Достижения (Выписка из Excel) -->
+        <section class="section diplomas" id="diplomas">
+            <div class="container">
+                <h2 class="fade-in">Достижения</h2>
+                <div class="achievement-card premium-hover-effect fade-in">
+                    <div class="achievement-icon"><i class="fas fa-robot"></i></div>
+                    <div class="achievement-content">
+                        <h3>Резерв сборной Москвы по робототехнике</h3>
+                        <span class="achievement-badge">ЦПМ | 7-8 класс</span>
+                        <p>Единственный среди всех участников отбора, сдавший экзамен на <strong>13 из 13 баллов</strong>. Подтвержденный экспертный уровень аналитического мышления и решения нестандартных инженерных задач.</p>
+
+                        <div class="proof-block">
+                            <div class="proof-header">
+                                <i class="fas fa-file-excel"></i> Выписка из официального протокола (05.09.26)
+                            </div>
+                            <div class="proof-data">
+                                <div class="proof-row"><span class="proof-label">Студент:</span> <span class="proof-value">Мо*** Никита (ID: 2532394)</span></div>
+                                <div class="proof-row"><span class="proof-label">Школа:</span> <span class="proof-value">ГБОУ Школа № 1329 (7 класс)</span></div>
+                                <div class="proof-row"><span class="proof-label">Баллы (Теория / Практика):</span> <span class="proof-value">7 / 6</span></div>
+                                <div class="proof-row" style="margin-top: 0.5rem;"><span class="proof-label">Итоговый балл:</span> <span class="proof-value highlight">13.00</span></div>
+                                <div class="proof-row"><span class="proof-label">Статус:</span> <span class="proof-value" style="color: var(--clr-primary);">Приглашен в резерв</span></div>
+                            </div>
+                            <a href="https://mosrobotics.ru/sbornaya-po-robototexnike-itogi-otbora-2/" class="proof-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> Итоги на mosrobotics.ru
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section class="section contacts" id="contacts">
+            <div class="container">
+                <h2 class="fade-in">Контакты</h2>
+                <p class="contacts-subtitle">Открыт для сложных инженерных задач и R&amp;D проектов</p>
+                <div class="contact-links">
+                    <a href="https://t.me/Set_ez" class="contact-link premium-hover-effect" target="_blank" rel="noopener">
+                        <span class="contact-icon"><i class="fab fa-telegram"></i></span>
+                        <span>Telegram: @Set_ez</span>
+                    </a>
+                    <a href="https://github.com/nikizi1234-ship-it" class="contact-link premium-hover-effect" target="_blank" rel="noopener">
+                        <span class="contact-icon"><i class="fab fa-github"></i></span>
+                        <span>GitHub: nikizi1234</span>
+                    </a>
+                    <a href="mailto:nikizi1234@gmail.com" class="contact-link premium-hover-effect">
+                        <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                        <span>Email: Написать письмо</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Кнопка "Наверх" -->
+    <button class="back-to-top" id="backToTop" aria-label="Наверх">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Модальное окно -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Название проекта</h2>
+                <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            </div>
+            <div class="modal-content" id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
